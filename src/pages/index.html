@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/output.css">
+    <link rel="stylesheet" href="../style/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="gradient-bg-day" id="body">
+    <header class="w-full py-4 px-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <h1 class="text-3xl font-bold logo-text">CineME</h1>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300">Home</a>
+                <a href="#" class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300">Dashboard</a>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="search-container flex-1 max-w-md mx-8">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="Search movie" 
+                        class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400"
+                    />
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side Icons -->
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button 
+                    id="themeToggle" 
+                    class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                    title="Toggle Day/Night Mode"
+                >
+                    <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-2">
+                    <span class="text-white font-medium hidden sm:block">Dararith PISETH</span>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold">
+                        D
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white p-2" id="mobileMenuBtn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden mt-4 hidden" id="mobileMenu">
+            <div class="flex flex-col space-y-2 bg-black/20 backdrop-blur-sm rounded-lg p-4">
+                <a href="#" class="text-white hover:text-red-400 py-2 transition-colors duration-300">Home</a>
+                <a href="#" class="text-white hover:text-red-400 py-2 transition-colors duration-300">Dashboard</a>
+            </div>
+        </div>
+        <div class="my-4 border-b border-gray-200"></div>
+    </header>
 </body>
+<script src="./index.js"></script>
 </html>
