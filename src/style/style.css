@@ -1,21 +1,21 @@
-.gradient-bg-day {
+    .gradient-bg-day {
     background: linear-gradient(135deg, #4a1c40 0%, #2d1b3d 50%, #1a0e2e 100%);
-}
-.gradient-bg-night {
+    }
+    .gradient-bg-night {
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%);
-}
-.logo-text {
+    }
+    .logo-text {
     background: linear-gradient(45deg, #ff4757, #ff6b7a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-.nav-item {
+    }
+    .nav-item {
     position: relative;
     transition: all 0.3s ease;
-}
-.nav-item::after {
-    content: '';
+    }
+    .nav-item::after {
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -23,24 +23,45 @@
     height: 2px;
     background: linear-gradient(45deg, #ff4757, #ff6b7a);
     transition: width 0.3s ease;
-}
-.nav-item:hover::after,
-.nav-item.active::after {
+    }
+    .nav-item:hover::after,
+    .nav-item.active::after {
     width: 100%;
-}
-.search-container {
+    }
+    .search-container {
     position: relative;
-}
-.search-input {
+    }
+    .search-input {
     transition: all 0.3s ease;
-}
-.search-input:focus {
+    }
+    .search-input:focus {
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
-}
-.theme-toggle {
+    }
+    .theme-toggle {
     transition: all 0.3s ease;
-}
-.theme-toggle:hover {
+    }
+    .theme-toggle:hover {
     transform: scale(1.1);
-}
+    }
+    /* Custom Banner Transition */
+    .banner-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .banner-slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1ms ease-in-out;
+    }
+
+    .gradient-overlay {
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    }
+    
