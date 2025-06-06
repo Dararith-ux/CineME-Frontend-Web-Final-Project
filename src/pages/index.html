@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="gradient-bg-day" id="body">
+  <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
     <header class="w-full py-4 px-6">
       <div
         class="max-w-7xl mx-auto flex items-center justify-between my-2 border-b pb-4 border-gray-200"
@@ -153,9 +153,17 @@
 
     <main class="w-full py-4 px-6">
       <div class="flex items-center flex-col">
-        <h1 class="text-[40px] font-semibold text-white w-[900px] text-center">
-          Dive into each movie and discover the best stories waiting to be seen!
+        <h1
+          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+        >
+          Dive into each movie and discover the best
         </h1>
+        <h1
+          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+        >
+          stories waiting to be seen!
+        </h1>
+
         <img
           class="rounded-[20px] w-[1270px] h-[650px] mt-4"
           src="https://i.pinimg.com/736x/cc/85/60/cc8560ed3509e2e1ada91f3f327ee04c.jpg"
@@ -169,7 +177,7 @@
           Most Popular Movie
         </div>
         <!-- Banner Section  -->
-        <section class="w-[1250px]">
+        <section class="2xl:w-[1250px] xl:w-[1024px] lg:[768px]">
           <!-- Banner Container -->
           <div
             class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
@@ -329,9 +337,10 @@
           </div>
         </section>
       </div>
-      <div id="postercontainer" class="grid grid-cols-5 items-center justify-center px-6">
-
-      </div>
+      <div
+        id="postercontainer"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-2 xl:mx-[250px] lg:mx-[150px]"
+      ></div>
     </main>
     <script src="./index.js"></script>
     <script src="../js/api.js"></script>
