@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../style/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
-    src="https://kit.fontawesome.com/5ce14b4205.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/5ce14b4205.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body class="gradient-bg-day" id="body">
     <header class="w-full py-4 px-6">
@@ -162,98 +162,174 @@
           alt="Movie poster"
         />
       </div>
-    </main>
-    <!-- Most Popular Movie Section -->
-  <div class="max-w-7xl mx-auto px-4 py-8">
-    <div class="text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
-      Most Popular Movie
-    </div>
-    <!-- Banner Section  -->
-    <section class="   w-[1250px] "> 
-        <!-- Banner Container -->
-        <div class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group" id="bannerContainer">
-            <!-- Banner Slides 1-->
-            <div class="banner-slide banner-transition absolute inset-0 opacity-100"
-                style="background-image: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(75,0,130,0.4)), url('../img/image.png')">
-                <div class="gradient-overlay absolute inset-0"></div>
-                <div class="relative z-10 h-full flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h2 class="text-5xl font-bold mb-4">Adventure and romance.</h2>
-                        <h3 class="text-3xl mb-4">ENDGAME</h3>
-                        <p class="text-lg opacity-80 max-w-md ">Maverick (2022) is an action-drama where Maverick trains a new generation of pilots for a dangerous mission.</p>
-                    </div>
-                </div>
-            </div>
-             <!-- Banner Slides 2-->
-            <div class="banner-slide banner-transition absolute inset-0 opacity-0"
-                style="background-image: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(139,0,0,0.4)), url('https://cdn.marvel.com/content/1x/captainamericabravenewworld_lob_crd_05.jpg')">
-                <div class="gradient-overlay absolute inset-0"></div>
-                <div class="relative z-10 h-full flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h2 class="text-5xl font-bold mb-4">superhero</h2>
-                        <h3 class="text-3xl mb-4">NO WAY HOME</h3>
-                        <p class="text-lg opacity-80 max-w-md">Brave New World (2025) follows Sam Wilson as the new Captain America, facing new challenges and enemies.</p>
-                    </div>
-                </div>
-            </div>
-             <!-- Banner Slides 3-->
-             <div class="banner-slide banner-transition absolute inset-0 opacity-0"
-             style="background-image: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(2, 10, 50, 0.4)), url('https://s1.thcdn.com/design-assets/products/13508485/13508485/No%20way%20home%20banner.jpg')">
-             <div class="gradient-overlay absolute inset-0"></div>
-             <div class="relative z-10 h-full flex items-center justify-center">
-                 <div class="text-center text-white">
-                     <h2 class="text-5xl font-bold mb-4">Spider-Man</h2>
-                     <h3 class="text-3xl mb-4">NO WAY HOME</h3>
-                     <p class="text-lg opacity-80 max-w-md">Peter Parker sacrifices his personal life by making everyone forget his identity to protect his loved ones, leaving him isolated but committed to being Spider-Man.</p>
-                 </div>
-             </div>
-         </div>
-    
-            <!-- Navigation Arrows -->
-            <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20">
-                ❮
-            </button>
-            <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20">
-                ❯
-            </button>
-    
-            <!-- Click Indicator -->
-            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm opacity-60 z-20 group-hover:opacity-100 transition-opacity">
-                Click to explore more movies
-            </div>
+
+      <!-- Most Popular Movie Section -->
+      <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
+          Most Popular Movie
         </div>
-    <!-- Now Showing Section -->
-<div class="mt-16">
-    <div class="flex items-center justify-start gap-20 mb-8">
-      <h2 class="text-white text-3xl font-bold">Now Showing</h2>
-      
-      <!-- Search Bar -->
-      <div class="relative">
-        <input
-          type="text"
-          placeholder="Find your movie here"
-          class="w-full max-w-2xl block bg-gray-800 text-white px-6 py-4 pl-6 pr-12 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
-        <!-- Font Awesome Magnifying Glass Icon -->
-        <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 transform -translate-y-1/2 text-white"></i>
+        <!-- Banner Section  -->
+        <section class="w-[1250px]">
+          <!-- Banner Container -->
+          <div
+            class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
+            id="bannerContainer"
+          >
+            <!-- Banner Slides 1-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-100"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(75, 0, 130, 0.4)
+                  ),
+                  url('../img/image.png');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">
+                    Adventure and romance.
+                  </h2>
+                  <h3 class="text-3xl mb-4">ENDGAME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Maverick (2022) is an action-drama where Maverick trains a
+                    new generation of pilots for a dangerous mission.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Banner Slides 2-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(139, 0, 0, 0.4)
+                  ),
+                  url('https://cdn.marvel.com/content/1x/captainamericabravenewworld_lob_crd_05.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">superhero</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Brave New World (2025) follows Sam Wilson as the new Captain
+                    America, facing new challenges and enemies.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Banner Slides 3-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(2, 10, 50, 0.4)
+                  ),
+                  url('https://s1.thcdn.com/design-assets/products/13508485/13508485/No%20way%20home%20banner.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">Spider-Man</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Peter Parker sacrifices his personal life by making everyone
+                    forget his identity to protect his loved ones, leaving him
+                    isolated but committed to being Spider-Man.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button
+              id="prevBtn"
+              class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20"
+            >
+              ❮
+            </button>
+            <button
+              id="nextBtn"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20"
+            >
+              ❯
+            </button>
+
+            <!-- Click Indicator -->
+            <div
+              class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm opacity-60 z-20 group-hover:opacity-100 transition-opacity"
+            >
+              Click to explore more movies
+            </div>
+          </div>
+
+          <!-- Now Showing Section -->
+          <div class="mt-16">
+            <div class="flex items-center justify-start gap-20 mb-8">
+              <h2 class="text-white text-3xl font-bold">Now Showing</h2>
+
+              <!-- Search Bar -->
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="Find your movie here"
+                  class="w-full max-w-2xl block bg-gray-800 text-white px-6 py-4 pl-6 pr-12 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+                <!-- Font Awesome Magnifying Glass Icon -->
+                <i
+                  class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 transform -translate-y-1/2 text-white"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Movie Slots Section -->
+            <div class="flex flex-wrap justify-center space-x-4 mb-8">
+              <div
+                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center"
+              >
+                1
+              </div>
+              <div
+                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                2
+              </div>
+              <div
+                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                3
+              </div>
+              <div
+                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                4
+              </div>
+              <div
+                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                5
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
-  
-    <!-- Movie Slots Section -->
-    <div class="flex flex-wrap justify-center space-x-4 mb-8">
-      <div class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center">1</div>
-      <div class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center">2</div>
-      <div class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center">3</div>
-      <div class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center">4</div>
-      <div class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center">5</div>
-    </div>
-  </div>
-  <div id="poster">
-    
-  </div>
-  
-    </section>
+    </main>
+    <script src="./index.js"></script>
   </body>
-  <script src="./index.js"></script>
-  <script src="../js/api.js"></script>
 </html>
