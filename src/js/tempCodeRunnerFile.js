@@ -1,1 +1,0 @@
-const cardcontainer = document.getElementById("postercontainer");
