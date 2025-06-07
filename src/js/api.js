@@ -60,8 +60,11 @@ function openModal(index) {
   const movie = movies[index];
   const formattedDate = formatReleaseDate(movie.release_date);
 
-  // Populate basic info
+  // Show modal
   document.getElementById("modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+
+  // Populate basic movie info
   document.getElementById("modal-movieTitle").innerText = movie.title;
   document.getElementById("modal-moviePoster").src = `${imgsrc}${movie.poster_path}`;
   document.getElementById("modal-movieDate").innerText = formattedDate;
@@ -69,24 +72,57 @@ function openModal(index) {
   document.getElementById("modal-movieOverview").innerText = movie.overview;
   document.getElementById("modal-movieLang").innerText = `Language: ${movie.original_language.toUpperCase()}`;
 
-  // Fetch trailer
+  // Elements
+  const iframe = document.querySelector("#modal iframe");
+  const trailerContainer = iframe.parentElement;
+
+  // Clear iframe and ensure it's visible
+  iframe.src = "";
+  iframe.classList.remove("hidden");
+
+  // Remove any existing fallback text
+  const oldFallback = trailerContainer.querySelector(".no-trailer");
+  if (oldFallback) oldFallback.remove();
+
+  // Fetch trailer from TMDB
   fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`)
     .then(res => res.json())
     .then(videoData => {
       const trailer = videoData.results.find(v => v.site === "YouTube" && v.type === "Trailer");
-      const iframe = document.querySelector("#modal iframe");
       if (trailer) {
         iframe.src = `https://www.youtube.com/embed/${trailer.key}`;
+        iframe.classList.remove("hidden");
       } else {
         iframe.src = "";
-        iframe.replaceWith("No trailer available.");
+        iframe.classList.add("hidden");
+
+        // Add fallback text
+        const fallback = document.createElement("div");
+        fallback.textContent = "🎬 No trailer available for this movie.";
+        fallback.className = "no-trailer text-center text-cyan-300 text-lg mt-4";
+        trailerContainer.appendChild(fallback);
       }
+    })
+    .catch(err => {
+      console.error("Trailer fetch error:", err);
     });
 }
+
 function closeModal() {
   document.getElementById("modal").classList.add("hidden");
-  document.querySelector("#modal iframe").src = ""; // stop video
+  document.body.style.overflow = "auto";
+
+  // Reset trailer iframe
+  const iframe = document.querySelector("#modal iframe");
+  iframe.src = "";
+  iframe.classList.remove("hidden");
+
+  // Remove fallback text if exists
+  const trailerContainer = iframe.parentElement;
+  const fallback = trailerContainer.querySelector(".no-trailer");
+  if (fallback) fallback.remove();
 }
+
 
 // Bind pagination buttons
 document.querySelectorAll(".page-button").forEach((btn) => {
