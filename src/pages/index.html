@@ -309,27 +309,27 @@
             <!-- Movie Slots Section -->
             <div class="flex flex-wrap justify-center space-x-4 mb-8">
               <div
-                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center"
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center"
               >
                 1
               </div>
               <div
-                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
               >
                 2
               </div>
               <div
-                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
               >
                 3
               </div>
               <div
-                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
               >
                 4
               </div>
               <div
-                class="bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
               >
                 5
               </div>
@@ -341,8 +341,72 @@
         id="postercontainer"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-2 xl:mx-[250px] lg:mx-[150px]"
       ></div>
+
+      <!-- modal -->
+      <div
+        id="modal"
+        class="p-[50px] fixed inset-0 m-auto w-[1300px] h-[800px] flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-md border-[2px] border-cyan-400 rounded-xl shadow-[0_0_20px_5px_rgba(34,211,238,0.7)] z-50 hidden"
+      >
+        <button
+          class="absolute top-4 right-4 text-cyan-400 hover:text-cyan-200 text-4xl"
+          onclick="closeModal()"
+        >
+          <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+
+        <div class="flex justify-between w-full h-full">
+          <div class="px-[50px] flex flex-col items-start flex-shrink-0">
+            <h1
+              id="modal-movieTitle"
+              class="pb-[20px] text-3xl text-white font-semibold"
+            ></h1>
+            <img
+              id="modal-moviePoster"
+              class="h-[380px] w-[270px] object-cover rounded-xl shadow-xl"
+              src=""
+              alt=""
+            />
+            <h1 class="pt-[20px] text-3xl text-white font-semibold">
+              <i class="fa-solid fa-calendar-days pr-10"></i
+              ><span id="modal-movieDate"></span>
+            </h1>
+            <h1 class="pt-[20px] text-3xl text-white font-semibold">
+              <i class="fa-solid fa-star pr-10"></i>
+              <span id="modal-movieRate"></span>
+            </h1>
+            <h1 class="pt-[20px] text-3xl text-white font-semibold">
+              <i class="fa-solid fa-star"></i>
+            </h1>
+            <h1
+              id="modal-movieLang"
+              class="pt-[20px] text-3xl text-white font-semibold"
+            >
+              <i class="fa-solid fa-language"></i>
+            </h1>
+          </div>
+          <div class="flex-1 text-white flex flex-col px-[50px]">
+            <h1 class="pb-[20px] text-3xl text-white font-semibold">
+              Watch trailer now
+            </h1>
+            <iframe
+              width="full"
+              height="380"
+              src="https://www.youtube.com/embed/-PqcG9IT3SQ?si=6wB4W7QCof6-nxZY"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <h1
+              id="modal-movieOverview"
+              class="pt-[20px] text-xl text-white font-semibold"
+            ></h1>
+          </div>
+        </div>
+      </div>
     </main>
-    <script src="./index.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/api.js"></script>
   </body>
 </html>
