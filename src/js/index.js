@@ -149,3 +149,75 @@ document.addEventListener("keydown", (e) => {
     nextSlide();
   }
 });
+//============================Footer=========================== Add hover effects and==================================
+document.addEventListener("DOMContentLoaded", function () {
+  // Social media icons hover effect
+  const socialIcons = document.querySelectorAll('footer a[href="#"]');
+
+  socialIcons.forEach((icon) => {
+    icon.addEventListener("mouseenter", function () {
+      this.style.transform = "scale(1.1)";
+      this.style.transition = "transform 0.2s ease";
+    });
+
+    icon.addEventListener("mouseleave", function () {
+      this.style.transform = "scale(1)";
+    });
+  });
+});
+
+// ==============================Footer================================================
+// ABA Modal functions with unique names to avoid conflicts
+function openABAModal(event) {
+  event.preventDefault(); // Prevent default link behavior
+  const modal = document.getElementById("abaModal");
+  const modalContent = modal.querySelector(".modal-content");
+
+  // Show modal
+  modal.classList.remove("opacity-0", "invisible");
+  modal.classList.add("opacity-100", "visible");
+
+  // Scale up modal content
+  setTimeout(() => {
+    modalContent.classList.remove("scale-90");
+    modalContent.classList.add("scale-100");
+  }, 10);
+
+  // Prevent body scrolling
+  document.body.style.overflow = "hidden";
+}
+
+function closeABAModal() {
+  const modal = document.getElementById("abaModal");
+  const modalContent = modal.querySelector(".modal-content");
+
+  // Scale down modal content
+  modalContent.classList.remove("scale-100");
+  modalContent.classList.add("scale-90");
+
+  // Hide modal after animation
+  setTimeout(() => {
+    modal.classList.remove("opacity-100", "visible");
+    modal.classList.add("opacity-0", "invisible");
+  }, 200);
+
+  // Restore body scrolling
+  document.body.style.overflow = "auto";
+}
+
+// Close modal when clicking outside
+document.getElementById("abaModal").addEventListener("click", function (event) {
+  if (event.target === this) {
+    closeABAModal();
+  }
+});
+
+// Close modal with Escape key (only if ABA modal is open)
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("abaModal");
+    if (modal.classList.contains("visible")) {
+      closeABAModal();
+    }
+  }
+});

@@ -65,4 +65,26 @@
     );
     }
    
+    .modal-overlay {
+        backdrop-filter: blur(8px);
+    }
+    
+    .qr-pattern {
+        background-image: 
+            repeating-linear-gradient(0deg, #333, #333 2px, transparent 2px, transparent 4px),
+            repeating-linear-gradient(90deg, #333, #333 2px, transparent 2px, transparent 4px);
+        opacity: 0.8;
+    }
+
+    .modal-content {
+        background: linear-gradient(135deg, #4a5568, #2d3748);
+    }
+
+    .payment-card {
+        background: linear-gradient(45deg, #eb001b, #ff5f00);
+    }
+
+    .paypal-card {
+        background: #0070ba;
+    }
     

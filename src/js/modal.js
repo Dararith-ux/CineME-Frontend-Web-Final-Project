@@ -13,3 +13,4 @@ fetch(url)
     console.log(movies);
   })
   .catch((error) => console.error("Error fetching data:", error));
+
