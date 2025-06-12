@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5ce14b4205.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
+    <header class="w-full py-4 px-6">
+      <div
+      class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0 my-2 border-b pb-4 border-gray-200 px-4"
+    >
+      <!-- Logo -->
+      <div class="flex items-center">
+        <h1 class="text-2xl sm:text-3xl font-bold logo-text text-white">CineME</h1>
+      </div>
+    
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-6">
+        <a
+          href="#"
+          class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
+          >Home</a
+        >
+        <a
+          href="./dashbaord.html"
+          class=" text-white hover:text-red-400 font-medium transition-colors duration-300"
+          >Dashboard</a
+        >
+      </nav>
+    
+      <!-- Search Bar -->
+      <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search movie"
+            class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400"
+          />
+          <button
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Right Side Icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Theme Toggle -->
+        <button
+          id="themeToggle"
+          class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+          title="Toggle Day/Night Mode"
+        >
+          <svg
+            id="sunIcon"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
+          </svg>
+          <svg
+            id="moonIcon"
+            class="w-5 h-5 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            ></path>
+          </svg>
+        </button>
+    
+        <!-- User Profile -->
+        <div class="flex items-center space-x-2">
+          <span class="text-white font-medium hidden sm:block"
+            >Dararith PISETH</span
+          >
+          <div
+            class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold"
+          >
+            D
+          </div>
+        </div>
+      </div>
+    
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white p-2" id="mobileMenuBtn">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden mt-4 hidden" id="mobileMenu">
+        <div
+          class="flex flex-col space-y-2 bg-black/20 backdrop-blur-sm rounded-lg p-4"
+        >
+          <a
+            href="#"
+            class="text-white hover:text-red-400 py-2 transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="text-white hover:text-red-400 py-2 transition-colors duration-300"
+            >Dashboard</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="w-full py-4 px-6">
+      <div class="flex items-center flex-col">
+        <h1
+          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+        >
+          Dive into each movie and discover the best
+        </h1>
+        <h1
+          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+        >
+          stories waiting to be seen!
+        </h1>
+
+        <img
+          class="rounded-[20px] mt-4 mx-auto 
+          w-[100%] sm:w-[95%] md:w-[700px] lg:w-[1000px] xl:w-[1270px] 
+          h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]"
+          src="https://i.pinimg.com/736x/cc/85/60/cc8560ed3509e2e1ada91f3f327ee04c.jpg"
+          alt="Movie poster"
+        />
+      </div>
+
+      <!-- Most Popular Movie Section -->
+      <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
+          Most Popular Movie
+        </div>
+        <!-- Banner Section  -->
+        <section class="2xl:w-[1250px] xl:w-[1024px] lg:[768px]">
+          <!-- Banner Container -->
+          <div
+            class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
+            id="bannerContainer"
+          >
+            <!-- Banner Slides 1-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-100"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(75, 0, 130, 0.4)
+                  ),
+                  url('../img/image.png');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">
+                    Adventure and romance.
+                  </h2>
+                  <h3 class="text-3xl mb-4">ENDGAME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Maverick (2022) is an action-drama where Maverick trains a
+                    new generation of pilots for a dangerous mission.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Banner Slides 2-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(139, 0, 0, 0.4)
+                  ),
+                  url('https://cdn.marvel.com/content/1x/captainamericabravenewworld_lob_crd_05.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">superhero</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Brave New World (2025) follows Sam Wilson as the new Captain
+                    America, facing new challenges and enemies.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Banner Slides 3-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(2, 10, 50, 0.4)
+                  ),
+                  url('https://s1.thcdn.com/design-assets/products/13508485/13508485/No%20way%20home%20banner.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
+              <div
+                class="relative z-10 h-full flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">Spider-Man</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Peter Parker sacrifices his personal life by making everyone
+                    forget his identity to protect his loved ones, leaving him
+                    isolated but committed to being Spider-Man.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button
+              id="prevBtn"
+              class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20"
+            >
+              ❮
+            </button>
+            <button
+              id="nextBtn"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl opacity-70 hover:opacity-100 transition-opacity z-20"
+            >
+              ❯
+            </button>
+
+            <!-- Click Indicator -->
+            <div
+              class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm opacity-60 z-20 group-hover:opacity-100 transition-opacity"
+            >
+              Click to explore more movies
+            </div>
+          </div>
+
+          <!-- Now Showing Section -->
+          <div class="mt-16">
+            <div class="flex items-center justify-start gap-20 mb-8">
+              <h2 class="text-white text-3xl font-bold">Now Showing</h2>
+
+              <!-- Search Bar -->
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="Find your movie here"
+                  class="w-full max-w-2xl block bg-gray-800 text-white px-6 py-4 pl-6 pr-12 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+                <!-- Font Awesome Magnifying Glass Icon -->
+                <i
+                  class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 transform -translate-y-1/2 text-white"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Movie Slots Section -->
+            <div class="flex flex-wrap justify-center space-x-4 mb-8">
+              <div
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center"
+              >
+                1
+              </div>
+              <div
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                2
+              </div>
+              <div
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                3
+              </div>
+              <div
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                4
+              </div>
+              <div
+                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
+              >
+                5
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div
+        id="postercontainer"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-2 xl:mx-[250px] lg:mx-[150px]"
+      ></div>
+
+      <!-- modal -->
+      <div
+        id="modal"
+        class="fixed inset-0 z-50 hidden bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4"
+      >
+        <div
+          class="bg-[#121212] border-2 border-cyan-400 rounded-xl shadow-[0_0_20px_5px_rgba(34,211,238,0.7)] w-full max-w-6xl max-h-[90vh] overflow-y-auto"
+        >
+          <!-- Close Button -->
+          <button
+            class="absolute top-4 right-4 text-cyan-300 hover:text-cyan-100 text-4xl z-50"
+            onclick="closeModal()"
+          >
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+
+          <div class="flex flex-col md:flex-row gap-6 p-6 text-cyan-100">
+            <!-- Left Column -->
+            <div class="md:w-1/3 flex flex-col items-center md:items-start">
+              <h1
+                id="modal-movieTitle"
+                class="text-2xl md:text-3xl font-semibold pb-4 text-center md:text-left"
+              ></h1>
+              <img
+                id="modal-moviePoster"
+                class="h-80 w-60 object-cover rounded-xl shadow-xl"
+                src=""
+                alt="Movie Poster"
+              />
+              <div class="mt-6 space-y-4 w-full text-center md:text-left">
+                <h2 class="text-xl font-semibold">
+                  <i class="fa-solid fa-calendar-days pr-2"></i>
+                  <span id="modal-movieDate"></span>
+                </h2>
+                <h2 class="text-xl font-semibold">
+                  <i class="fa-solid fa-star pr-2"></i>
+                  <span id="modal-movieRate"></span>
+                </h2>
+                <h2 class="text-xl font-semibold">
+                  <i class="fa-solid fa-language pr-2"></i>
+                  <span id="modal-movieLang"></span>
+                </h2>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="md:w-2/3 flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <h1 class="text-2xl md:text-3xl font-semibold">
+                  Watch Trailer Now
+                </h1>
+                <button id="add_to_watchlater">
+                  <i
+                    class="fa-solid fa-bookmark text-2xl"
+                    style="color: #ffc524"
+                  ></i>
+                </button>
+              </div>
+
+              <div class="w-full h-[420px]">
+                <iframe
+                  class="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/-PqcG9IT3SQ?si=6wB4W7QCof6-nxZY"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <p
+                id="modal-movieOverview"
+                class="text-base md:text-lg font-light leading-relaxed"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-gradient-to-br from-[#091737] via-[#020207] to-[#7F0E24] py-12 px-6 text-white"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <!-- More Detail Section -->
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-6">More Detail</h2>
+          <p class="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+            Our cinema webpage is designed to help users easily discover movies
+            they'll enjoy and provides free access to watch them online
+          </p>
+        </div>
+
+        <!-- Footer Info Section -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 text-center md:text-left"
+        >
+          <!-- Founder Section -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Founder</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Dararith PISETH</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Teng HUN</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Tola KEAN</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Inthanouk Meas</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- More Section -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4">More</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Upcoming features</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Rating</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Achievement</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow Us Section -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4">
+              <!-- Facebook -->
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                  alt="Facebook"
+                  class="w-8 h-8 hover:opacity-80 transition"
+                />
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                  alt="Instagram"
+                  class="w-8 h-8 hover:opacity-80 transition"
+                />
+              </a>
+
+              <!-- TikTok -->
+              <a
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://freepnglogo.com/images/all_img/tik-tok-logo-transparent-031f.png"
+                  alt="TikTok"
+                  class="w-8 h-8 hover:opacity-80 transition"
+                />
+              </a>
+
+              <!-- YouTube -->
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png"
+                  alt="YouTube"
+                  class="w-10 h-10 hover:opacity-80 transition"
+                />
+              </a>
+
+              <!-- X (Twitter) -->
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/031/737/215/non_2x/twitter-new-logo-twitter-icons-new-twitter-logo-x-2023-x-social-media-icon-free-png.png"
+                  alt="X"
+                  class="w-10 h-10 hover:opacity-80 transition"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8">
+          <h1 class="text-3xl font-bold mb-8">Payment Options</h1>
+
+          <!-- Other payment methods (unaffected) -->
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="font-bold mb-2 text-[#000000]">Credit Card</h3>
+              <p class="text-gray-600">Pay with Visa or Mastercard</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="font-bold mb-2 text-[#000000]">Bank Transfer</h3>
+              <p class="text-gray-600">Direct bank transfer</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="font-bold mb-2 text-[#000000]">Digital Wallet</h3>
+              <p class="text-gray-600">PayPal and other wallets</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer section with payment logos -->
+        <footer class="bg-gray-800 text-white p-8">
+          <div class="container mx-auto">
+            <h3 class="text-xl font-bold mb-6 text-center">Sponsor Us!</h3>
+
+            <div class="flex items-center justify-center gap-8 flex-wrap">
+              <!-- ABA PayWay - ONLY THIS ONE HAS MODAL -->
+              <a
+                href="#"
+                onclick="openABAModal(event)"
+                class="block hover:opacity-80 transition"
+              >
+                <img
+                  src="https://coolbeans.digital/wp-content/uploads/2022/09/Frame-18.png"
+                  alt="ABA"
+                  class="h-[200px] w-auto cursor-pointer"
+                />
+              </a>
+
+              <!-- Mastercard - Regular element, no modal -->
+              <div class="flex items-center space-x-2 hover:opacity-80">
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-red-500 rounded-full"></div>
+                  <div class="w-8 h-8 bg-yellow-500 rounded-full -ml-2"></div>
+                </div>
+                <span class="text-white font-semibold">Mastercard</span>
+              </div>
+
+              <!-- PayPal - Regular link, no modal -->
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:opacity-80 transition"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png"
+                  alt="PayPal"
+                  class="h-12 w-auto"
+                />
+              </a>
+            </div>
+          </div>
+        </footer>
+
+        <!-- ABA PAY MODAL - Only appears when ABA logo is clicked -->
+        <div
+          id="abaModal"
+          class="fixed inset-0 bg-black bg-opacity-80 modal-overlay flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300 ease-out"
+        >
+          <!-- Modal Content -->
+          <div
+            class="modal-content rounded-2xl p-6 max-w-lg w-11/12 mx-4 relative transform scale-90 transition-transform duration-300 ease-out shadow-2xl"
+          >
+            <!-- Close Button -->
+            <button
+              onclick="closeABAModal()"
+              class="absolute top-3 left-4 bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 text-sm font-bold"
+            >
+              ←
+            </button>
+
+            <!-- QR Code Cards Container -->
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-2 max-w-4xl h-auto sm:h-[400px]"
+            >
+              <!-- First QR Card -->
+              <div
+                class="bg-white rounded-xl p-4 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 w-full sm:w-auto"
+              >
+                <!-- ABA PAY Logo -->
+                <img src="../img/ABA.png" alt="" class="w-60 h-70" />
+
+                <!-- KHQC Badge -->
+                <div
+                  class="inline-block bg-red-500 text-white text-xs font-bold py-1 px-3 rounded-full"
+                >
+                  KHQC
+                </div>
+              </div>
+            </div>
+
+            <!-- Sponsor Section -->
+            <div
+              class="text-center mt-6 pt-4 border-t border-gray-500 border-opacity-30"
+            >
+              <h3 class="text-white text-lg mb-4 font-light opacity-90">
+                Sponsor Us!
+              </h3>
+
+              <div class="flex items-center justify-center gap-6 flex-wrap">
+                <!-- ABA PAYWAY Logo -->
+                <div class="text-blue-400 text-lg font-bold">
+                  ABA <span class="text-blue-300">PAYWAY</span>
+                </div>
+
+                <!-- Payment Method Icons -->
+                <div class="flex gap-3 items-center">
+                  <div
+                    class="payment-card text-white text-xs font-bold py-1 px-2 rounded"
+                  >
+                    mastercard
+                  </div>
+                  <div
+                    class="paypal-card text-white text-xs font-bold py-1 px-2 rounded"
+                  >
+                    PayPal
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/index.js"></script>
+    <script src="../js/watchlater.js"></script>
+    <script src="../js/api.js"></script>
+  </body>
+</html>
