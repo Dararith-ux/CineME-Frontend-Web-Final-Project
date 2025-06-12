@@ -58,6 +58,9 @@ function highlightCurrentPage() {
 
 function openModal(index) {
   const movie = movies[index];
+  if (typeof setCurrentMovieForWatchLater === 'function') {
+    setCurrentMovieForWatchLater(movie); // 👈 pass movie to watchlater.js
+  }
   const formattedDate = formatReleaseDate(movie.release_date);
 
   // Show modal

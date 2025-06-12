@@ -4,36 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CineME Dashboard</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/5ce14b4205.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/5ce14b4205.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
   <body class="bg-gradient-to-b from-[#190000] to-[#29001b] h-full" id="body">
     <!-- Header -->
-    <header class="w-full py-4 px-6 ">
-      <div class="max-w-7xl mx-auto flex items-center justify-between my-2 border-b pb-4 border-gray-200">
+    <header class="w-full py-4 px-6 fixed">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between my-2 border-b pb-4 border-gray-200"
+      >
         <!-- Logo -->
         <div class="flex items-center space-x-2">
           <i class="fas fa-film text-red-500 text-2xl"></i>
-          <h1 class="text-3xl font-extrabold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+          <h1
+            class="text-3xl font-extrabold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
+          >
             CineME
           </h1>
         </div>
 
         <!-- Navigation -->
         <nav class="hidden md:flex items-center space-x-8">
-          <a href="./index.html" class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300">Home</a>
-          <a href="#" class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300">Dashboard</a>
+          <a
+            href="./homepage.html"
+            class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
+            >Dashboard</a
+          >
         </nav>
 
         <!-- Search Bar -->
         <div class="search-container flex-1 max-w-md mx-8">
           <div class="relative">
-            <input type="text" placeholder="Search movie" class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400" />
-            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            <input
+              type="text"
+              placeholder="Search movie"
+              class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400"
+            />
+            <button
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
               </svg>
             </button>
           </div>
@@ -42,26 +73,68 @@
         <!-- Right Side Icons -->
         <div class="flex items-center space-x-4">
           <!-- Theme Toggle -->
-          <button id="themeToggle" class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300" title="Toggle Day/Night Mode">
-            <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <button
+            id="themeToggle"
+            class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+            title="Toggle Day/Night Mode"
+          >
+            <svg
+              id="sunIcon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
             </svg>
-            <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            <svg
+              id="moonIcon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
             </svg>
           </button>
 
           <!-- User Profile -->
           <div class="flex items-center space-x-2">
-            <span class="text-white font-medium hidden sm:block">Dararith PISETH</span>
-            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold">D</div>
+            <span class="text-white font-medium hidden sm:block"
+              >Dararith PISETH</span
+            >
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold"
+            >
+              D
+            </div>
           </div>
         </div>
 
         <!-- Mobile Menu Button -->
         <button class="md:hidden text-white p-2" id="mobileMenuBtn">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
           </svg>
         </button>
       </div>
@@ -69,25 +142,33 @@
 
     <!-- Main Layout -->
     <main class="flex h-[100vh]">
-
       <!-- Sidebar -->
-      <aside class="h-full w-64 fixed top-0 pl-6 pt-8 pb-8 backdrop-blur-sm text-white min-h-screen shadow-lg border-r border-white/10">
-        <h2 class="text-2xl font-bold mb-6  border-white/20 pb-2">Library</h2>
+      <aside
+        class="h-full w-64 fixed top-0 pl-6 pt-8 pb-8 backdrop-blur-sm text-white min-h-screen shadow-lg border-r border-white/10"
+      >
+        <h2 class="text-2xl font-bold mb-6 border-white/20 pb-2">Library</h2>
         <nav class="flex flex-col space-y-4 pr-6">
           <!-- Watch Later -->
-          <div class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center">
+          <div
+            id="watchLaterBtn"
+            class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
+          >
             <i class="fas fa-clock text-xl text-red-400 mb-2"></i>
             <h3 class="text-base font-semibold">Watch Later</h3>
           </div>
 
           <!-- Add New Movie -->
-          <div class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center">
+          <div
+            class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
+          >
             <i class="fas fa-plus-circle text-xl text-green-400 mb-2"></i>
             <h3 class="text-base font-semibold">Add New Movie</h3>
           </div>
 
           <!-- Statistics -->
-          <div class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center">
+          <div
+            class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
+          >
             <i class="fas fa-chart-bar text-xl text-blue-400 mb-2"></i>
             <h3 class="text-base font-semibold">Statistics</h3>
           </div>
@@ -95,10 +176,59 @@
       </aside>
 
       <!-- Right Side Content -->
-      <div class="h-full ml-64 p-8 flex  justify-center items-center bg-gradient-to-b from-[#190000] to-[#29001b]">
-        <img class="w-[500px]" src="../img/png.png" alt="" />
-        <p class="text-[50px] text-white text-center neon-text mt-4">Effortlessly Manage Your Movie Experience with Seamless Viewing, Popcorn, and Entertainment at Your Fingertips!</p>
+      <div
+        id="mainContent"
+        class="h-full w-full ml-64 p-8 flex justify-center pt-[120px] bg-gradient-to-b from-[#190000] to-[#29001b] px-[100px] gap-[20px] flex-col lg:flex-row"
+      >
+        <!-- <img
+          class="xl:w-[400px] lg:w-[350px] sm:w-[250px]"
+          src="../img/png.png"
+          alt=""
+        />
+        <p
+          class="xl:text-[35px] lg:text-[25px] sm:text-[20px] text-white text-center neon-text mt-4"
+        >
+          Effortlessly Manage Your Movie Experience with Seamless Viewing,
+          Popcorn, and Entertainment at Your Fingertips!
+        </p> -->
+
+        <div id="watchlist" class="flex flex-col gap-6 w-full text-white ">
+          <div
+            class="flex text-3xl font-bold w-full border-b border-white/20 pb-2 items-center justify-between"
+          >
+            <h2 class="">Your Watchlist</h2>
+            <i class="fa-regular fa-pen-to-square" style="color: #ffffff"></i>
+          </div>
+
+          <ul id="movieList" class="space-y-4">
+            <!-- <li
+              class="bg-white/10 border border-white/20 rounded-lg p-4 hover:bg-white/20 transition duration-300 flex justify-between items-center px-[50px] "
+            >
+              <div class=" flex items-center">
+                <img
+                  class="max-w-[100px]"
+                  src="https://image.tmdb.org/t/p/w300/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg"
+                  alt=""
+                />
+                <div class="pl-[20px] flex flex-col gap-1">
+                  <p class="text-3xl font-semibold">${title}</p>
+                  <p class="text-xl text-gray-300">${release_date}</p>
+                  <p class="text-xl text-gray-300">${laguage}</p>
+                  <p class="text-xl text-gray-300">${rating}</p>
+                </div>
+              </div>
+              <button
+                class="bg-green-500 text-black p-[10px] h-[50px] font-semibold rounded-[10px]"
+              >
+                Watch now
+              </button>
+            </li> -->
+          </ul>
+        </div>
       </div>
     </main>
+    <script src="../js/api.js"></script>
+    <script src="../js/watchlater.js"></script>
+    
   </body>
 </html>
