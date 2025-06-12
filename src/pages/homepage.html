@@ -23,14 +23,14 @@
         </div>
 
         <!-- Navigation -->
-        <nav class=" md:flex items-center space-x-8">
+        <nav class="md:flex items-center space-x-8">
           <a
             href="#"
             class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
             >Home</a
           >
           <a
-            href=".pages/dashbaord.html"
+            href="./dashbaord.html"
             class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
             >Dashboard</a
           >
@@ -390,9 +390,18 @@
 
             <!-- Right Column -->
             <div class="md:w-2/3 flex flex-col gap-6">
-              <h1 class="text-2xl md:text-3xl font-semibold">
-                Watch Trailer Now
-              </h1>
+              <div class="flex items-center justify-between">
+                <h1 class="text-2xl md:text-3xl font-semibold">
+                  Watch Trailer Now
+                </h1>
+                <button id="add_to_watchlater">
+                  <i
+                    class="fa-solid fa-bookmark text-2xl"
+                    style="color: #ffc524"
+                  ></i>
+                </button>
+              </div>
+
               <div class="w-full h-[420px]">
                 <iframe
                   class="w-full h-full rounded-lg"
@@ -691,6 +700,8 @@
     </footer>
 
     <script src="../js/index.js"></script>
+    <script src="../js/watchlater.js"></script>
     <script src="../js/api.js"></script>
+    
   </body>
 </html>
