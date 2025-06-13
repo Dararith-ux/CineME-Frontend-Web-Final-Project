@@ -6,7 +6,7 @@ const sunIcon = document.getElementById("sunIcon");
 const moonIcon = document.getElementById("moonIcon");
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
-
+const add_to_watch_letter_btn = document.getElementById("add_to_watch_later")
 // Set active nav item
 document.addEventListener("DOMContentLoaded", function () {
   const navItems = document.querySelectorAll(".nav-item");
@@ -221,3 +221,5 @@ document.addEventListener("keydown", function (event) {
     }
   }
 });
+
+// ADD THE WATCH LATER, LET SEE HOW IT WORK BECAUSE I HAVE NO IDEA.
