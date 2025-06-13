@@ -21,6 +21,7 @@ function loadPage(page) {
     .then((res) => res.json())
     .then((data) => {
       movies = data.results;
+      console.log(data)
       renderMovies();
       highlightCurrentPage();
     });
@@ -56,6 +57,33 @@ function highlightCurrentPage() {
   });
 }
 
+let watch_later = []
+function getCookieArray(name) {
+  const cookies = document.cookie.split("; ");
+  const found = cookies.find(row => row.startsWith(name + "="));
+  if (!found) return [];
+
+  try {
+    return JSON.parse(decodeURIComponent(found.split("=")[1]));
+  } catch (err) {
+    console.error(`Error parsing cookie ${name}:`, err);
+    return [];
+  }
+}
+window.onload = function () {
+  watch_later = getCookieArray("watch_later")
+}
+function add_to_watchlater(movieID) {
+  if (!watch_later.includes(movieID)) {
+    watch_later.push(movieID);
+    document.cookie = `watch_later=${JSON.stringify(watch_later)}; path=/;`;
+  } else {
+    watch_later = watch_later.filter(id => id!== movieID);
+    document.cookie = `watch_later=${JSON.stringify(watch_later)}; path=/;`;
+  }
+}
+
+
 function openModal(index) {
   const movie = movies[index];
   if (typeof setCurrentMovieForWatchLater === 'function') {
@@ -74,7 +102,9 @@ function openModal(index) {
   document.getElementById("modal-movieRate").innerText = `${movie.vote_average} / 10`;
   document.getElementById("modal-movieOverview").innerText = movie.overview;
   document.getElementById("modal-movieLang").innerText = `Language: ${movie.original_language.toUpperCase()}`;
-
+  document.getElementById("add_to_watchlater").onclick = function () {
+    add_to_watchlater(movie.id);
+  };
   // Elements
   const iframe = document.querySelector("#modal iframe");
   const trailerContainer = iframe.parentElement;
