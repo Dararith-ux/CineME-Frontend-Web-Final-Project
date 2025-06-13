@@ -16,25 +16,34 @@ document.addEventListener("DOMContentLoaded", () => {
       addBtn.onclick = function () {
         if (!currentMovie) return;
 
-        const li = document.createElement("li");
+        const li =document.createElement("li");
         li.className =
           "bg-white/10 border border-white/20 rounded-lg p-4 hover:bg-white/20 transition duration-300 flex justify-between items-center px-[50px]";
-
+        // li.innerHTML = `
+        //   <div class="flex items-center">
+        //     <img class="max-w-[100px]" src="https://image.tmdb.org/t/p/w300${currentMovie.poster_path}" alt="${currentMovie.title}" />
+        //     <div class="pl-[20px] flex flex-col gap-1">
+        //       <p class="text-3xl font-semibold">${currentMovie.title}</p>
+        //       <p class="text-xl text-gray-300">${currentMovie.release_date || "Unknown"}</p>
+        //       <p class="text-xl text-gray-300">${(currentMovie.original_language || "").toUpperCase()}</p>
+        //       <p class="text-xl text-gray-300">${currentMovie.vote_average || "N/A"} / 10</p>
+        //     </div>
+        //   </div>
+        //   <button class="bg-green-500 text-black p-[10px] h-[50px] font-semibold rounded-[10px]">Watch now</button>
+        // `;
         li.innerHTML = `
           <div class="flex items-center">
-            <img class="max-w-[100px]" src="https://image.tmdb.org/t/p/w300${currentMovie.poster_path}" alt="${currentMovie.title}" />
+            <img class="max-w-[100px]" src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRpBlLNm-0lrsQ-I4CvYRujxHATlIBQb5vYIiYNpyxPCfvkOiQXAqFuAl8ifMc6wK8TBd9W9i94M3v2E1alA074R9sYLr2v80q1oyPU80QgUnurlpWj-y6DJzb0RqeVvLvMTdDZQzZ-uvVt" alt="" />
             <div class="pl-[20px] flex flex-col gap-1">
-              <p class="text-3xl font-semibold">${currentMovie.title}</p>
-              <p class="text-xl text-gray-300">${currentMovie.release_date || "Unknown"}</p>
-              <p class="text-xl text-gray-300">${(currentMovie.original_language || "").toUpperCase()}</p>
-              <p class="text-xl text-gray-300">${currentMovie.vote_average || "N/A"} / 10</p>
+              <p class="text-3xl font-semibold">Ronaldo</p>
+              <p class="text-xl text-gray-300">HH</p>
+              <p class="text-xl text-gray-300">fsaf</p>
+              <p class="text-xl text-gray-300">10 / 10</p>
             </div>
           </div>
           <button class="bg-green-500 text-black p-[10px] h-[50px] font-semibold rounded-[10px]">Watch now</button>
         `;
-
         movieList.appendChild(li);
-        watchlist?.classList.remove("hidden");
       };
     } else {
       console.warn("Add to watchlater button not found inside modal.");
