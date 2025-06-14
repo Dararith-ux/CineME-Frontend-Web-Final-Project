@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CineME Dashboard</title>
     <link rel="stylesheet" href="../style/style.css" />
-    <link rel="stylesheet" href="../style/dashboard.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://kit.fontawesome.com/5ce14b4205.js"
@@ -117,209 +116,15 @@
             <p class="text-sm text-white/60 mt-1 relative z-10">Save for later viewing</p>
           </div>
 
-          <!-- Your existing Add New Movie card -->
-          <div
-            id="addMovieCard"
-            class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
-          >
-            <i class="fas fa-plus-circle text-xl text-green-400 mb-2"></i>
-            <h3 class="text-base font-semibold">Add New Movie</h3>
-
           <!-- Add New Movie -->
-          <div class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-green-500/20 hover:to-emerald-500/20 hover:border-green-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden">
+          <div id="" class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-green-500/20 hover:to-emerald-500/20 hover:border-green-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-green-500/0 to-emerald-500/0 group-hover:from-green-500/10 grouperaver:to-emerald-500/10 transition-all duration-300"></div>
             <i class="fas fa-plus-circle text-2xl text-green-400 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
             <h3 class="text-lg font-semibold relative z-10">Add New Movie</h3>
             <p class="text-sm text-white/60 mt-1 relative z-10">Expand your collection</p>
-
-          </div>
-
-          <!-- Draggable Modal -->
-          <div
-            id="addMovieModal"
-            class="absolute top-[100px] left-[250px] z-100 hidden bg-gray-900 rounded-2xl shadow-2xl w-[1000px] mt-[2px] max-w-md border border-gray-700"
-          >
-            <!-- Modal Header (Drag Handle) -->
-            <div
-              id="modalHeader"
-              class="flex items-center justify-between p-6 border-b border-gray-700 bg-gray-800 rounded-t-2xl cursor-move"
-            >
-              <h3 class="text-xl font-bold text-white">Add New Movie</h3>
-              <button
-                id="closeModal"
-                class="text-gray-400 hover:text-white transition-colors"
-              >
-                <svg
-                  class="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <!-- Modal Body -->
-            <form id="addMovieForm" class="p-6 space-y-4 text-white">
-              <!-- Movie Title -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Movie Title</label
-                >
-                <input
-                  type="text"
-                  id="movieTitle"
-                  required
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="Enter movie title"
-                />
-              </div>
-
-              <!-- Release Year -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Release Year</label
-                >
-                <input
-                  type="number"
-                  id="movieYear"
-                  min="1900"
-                  max="2025"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="e.g., 2023"
-                />
-              </div>
-
-              <!-- Genre -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Genre</label
-                >
-                <select
-                  id="movieGenre"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                >
-                  <option value="">Select Genre</option>
-                  <option value="Action">Action</option>
-                  <option value="Comedy">Comedy</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Horror">Horror</option>
-                  <option value="Romance">Romance</option>
-                  <option value="Sci-Fi">Sci-Fi</option>
-                  <option value="Thriller">Thriller</option>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Animation">Animation</option>
-                  <option value="Documentary">Documentary</option>
-                </select>
-              </div>
-
-              <!-- Director -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Director</label
-                >
-                <input
-                  type="text"
-                  id="movieDirector"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="Director name"
-                />
-              </div>
-
-              <!-- Rating -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Rating (1-10)</label
-                >
-                <input
-                  type="number"
-                  id="movieRating"
-                  min="1"
-                  max="10"
-                  step="0.1"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="e.g., 8.5"
-                />
-              </div>
-
-              <!-- Poster -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Poster URL (Optional)</label
-                >
-                <input
-                  type="url"
-                  id="moviePoster"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="https://example.com/poster.jpg"
-                />
-              </div>
-
-              <!-- Description -->
-              <div>
-                <label class="block text-sm font-medium text-gray-300 mb-2"
-                  >Description</label
-                >
-                <textarea
-                  id="movieDescription"
-                  rows="3"
-                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
-                  placeholder="Brief description of the movie..."
-                ></textarea>
-              </div>
-
-              <!-- Auto Fetch -->
-              <div class="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id="autoFetch"
-                  class="rounded border-gray-600 text-red-600 focus:ring-red-500"
-                />
-                <label for="autoFetch" class="text-sm text-gray-300">
-                  Auto-fetch movie details from API
-                </label>
-              </div>
-            </form>
-
-            <!-- Modal Footer -->
-            <div
-              class="flex items-center justify-end space-x-3 p-6 border-t border-gray-700"
-            >
-              <button
-                id="cancelBtn"
-                class="px-4 py-2 text-gray-400 hover:text-white transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                id="fetchDetailsBtn"
-                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Fetch Details
-              </button>
-              <button
-                id="addMovieSubmit"
-                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-              >
-                Add Movie
-              </button>
-            </div>
           </div>
 
           <!-- Statistics -->
-
-          <div
-            class="bg-white/10 border border-white/20 rounded-lg p-4 hover:scale-105 transition-all duration-300 hover:shadow-lg mt-[15px] cursor-pointer text-center"
-          >
-            <i class="fas fa-chart-bar text-xl text-blue-400 mb-2"></i>
-            <h3 class="text-base font-semibold">Statistics</h3>
-
           <div class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-300"></div>
             <i class="fas fa-chart-bar text-2xl text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
@@ -344,7 +149,6 @@
                 <span>Top Rated</span>
               </button>
             </div>
-
           </div>
         </nav>
       </aside>
@@ -358,18 +162,6 @@
           id="watchlist"
           class="flex flex-col gap-8 w-full max-w-6xl text-white h-full hidden"
         >
-
-          Effortlessly Manage Your Movie Experience with Seamless Viewing,
-          Popcorn, and Entertainment at Your Fingertips!
-        </p> -->
-
-        <div id="watchlist" class="flex flex-col gap-6 w-full text-white">
-          <div
-            class="flex text-3xl font-bold w-full border-b border-white/20 pb-2 items-center justify-between"
-          >
-            <h2 class="">Your Watchlist</h2>
-            <i class="fa-regular fa-pen-to-square" style="color: #ffffff"></i>
-
           <div class="flex text-4xl font-bold w-full border-b border-white/20 pb-4 items-center justify-between">
             <h2 class="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
               Your Watch Later List
@@ -377,7 +169,6 @@
             <button class="text-2xl text-white/60 hover:text-red-400 transition-colors duration-300 hover:scale-110 transform">
               <i class="fa-regular fa-pen-to-square"></i>
             </button>
-
           </div>
           <ul id="movieList" class="space-y-5"></ul>
           
@@ -416,10 +207,5 @@
 
     <script src="../js/api.js"></script>
     <script src="../js/watchlater.js"></script>
-
-    <script src="../js/AddMovie.js"></script>
-    <script></script>
-
-
   </body>
 </html>
