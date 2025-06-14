@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CineME Dashboard</title>
     <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/Movie.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://kit.fontawesome.com/5ce14b4205.js"
@@ -12,17 +13,26 @@
     ></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
-  <body class="bg-gradient-to-br from-[#190000] via-[#29001b] to-[#190000] min-h-screen" id="body">
+  <body
+    class="bg-gradient-to-br from-[#190000] via-[#29001b] to-[#190000] min-h-screen"
+    id="body"
+  >
     <!-- Header -->
-    <header class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl">
+    <header
+      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
+    >
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center space-x-3">
           <div class="relative">
             <i class="fas fa-film text-red-500 text-3xl drop-shadow-lg"></i>
-            <div class="absolute inset-0 bg-red-500/20 blur-xl rounded-full scale-150"></div>
+            <div
+              class="absolute inset-0 bg-red-500/20 blur-xl rounded-full scale-150"
+            ></div>
           </div>
-          <h1 class="text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
+          <h1
+            class="text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+          >
             CineME
           </h1>
         </div>
@@ -34,14 +44,18 @@
             class="nav-item relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
           >
             Home
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
+            ></span>
           </a>
           <a
             href="#"
             class="nav-item relative text-white font-semibold transition-all duration-300 group border-b-2 border-red-500"
           >
             Dashboard
-            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 to-pink-500"></span>
+            <span
+              class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 to-pink-500"
+            ></span>
           </a>
         </nav>
 
@@ -53,12 +67,26 @@
               placeholder="Search movies, actors, genres..."
               class="search-input w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
             />
-            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            <button
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
               </svg>
             </button>
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+            ></div>
           </div>
         </div>
 
@@ -70,81 +98,352 @@
             class="theme-toggle p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/10 hover:border-red-400 transition-all duration-300 shadow-lg hover:scale-105"
             title="Toggle Day/Night Mode"
           >
-            <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <svg
+              id="sunIcon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
             </svg>
-            <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            <svg
+              id="moonIcon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
             </svg>
           </button>
 
           <!-- User Profile -->
-          <div class="flex items-center space-x-3 bg-white/5 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/10 transition-all duration-300">
-            <span class="text-white font-semibold hidden sm:block">Dararith PISETH</span>
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg relative">
+          <div
+            class="flex items-center space-x-3 bg-white/5 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/10 transition-all duration-300"
+          >
+            <span class="text-white font-semibold hidden sm:block"
+              >Dararith PISETH</span
+            >
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg relative"
+            >
               D
-              <div class="absolute inset-0 rounded-full bg-gradient-to-br from-red-500/50 to-pink-500/50 blur-sm scale-110"></div>
+              <div
+                class="absolute inset-0 rounded-full bg-gradient-to-br from-red-500/50 to-pink-500/50 blur-sm scale-110"
+              ></div>
             </div>
           </div>
         </div>
 
         <!-- Mobile Menu Button -->
-        <button class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300" id="mobileMenuBtn">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <button
+          class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+          id="mobileMenuBtn"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
           </svg>
         </button>
       </div>
+      <!-- Mobile Navigation (hidden by default) -->
+      <nav
+        id="mobileMenu"
+        class="md:hidden fixed top-20 left-0 w-full bg-black/90 text-white backdrop-blur-lg border-t border-white/10 z-10 hidden flex-col space-y-4 py-4 px-6"
+      >
+        <a
+          href="./homepage.html"
+          class="block text-white/90 hover:text-white font-medium"
+          >Home</a
+        >
+        <a
+          href="#"
+          class="block text-white/90 hover:text-white font-medium border-b-2 border-red-500"
+          >Dashboard</a
+        >
+      </nav>
     </header>
 
     <!-- Main Layout -->
     <main class="flex min-h-screen">
       <!-- Sidebar -->
-      <aside class="w-72 fixed top-[88px] left-0 pl-6 pt-6 pb-8 bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl border-r border-white/10">
-        <h2 class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-white to-white/70 bg-clip-text">
+      <aside
+        class="w-72 fixed top-[88px] left-0 pl-6 pt-6 pb-8 bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl border-r border-white/10"
+      >
+        <h2
+          class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-white to-white/70 bg-clip-text"
+        >
           Library
         </h2>
         <nav class="flex flex-col space-y-5 pr-6">
           <!-- Watch Later -->
           <div
             id="watchLaterBtn"
-            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
-          >
-            <div class="absolute inset-0 bg-gradient-to-br from-red-500/0 to-pink-500/0 group-hover:from-red-500/10 group-hover:to-pink-500/10 transition-all duration-300"></div>
-            <i class="fas fa-clock text-2xl text-red-400 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+            class="group bg-gradient-to-br from-white/10  to-white/5 border  border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden "
+             >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-red-500/0 to-pink-500/0 group-hover:from-red-500/10 group-hover:to-pink-500/10 transition-all duration-300"
+            ></div>
+            <i
+              class="fas fa-clock text-2xl text-red-400 mb-3 group-hover:scale-110 transition-transform duration-300"
+            ></i>
             <h3 class="text-lg font-semibold relative z-10">Watch Later</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">Save for later viewing</p>
+            <p class="text-sm text-white/60 mt-1 relative z-10">
+              Save for later viewing
+            </p>
+            
+          </div>
+          
+
+          <!-- Add New Movie Button -->
+
+          <div
+            id="addMovieCard"
+            class="bg-white/10 h-[140px] rounded-2xl border border-white/20 p-4 hover:bg-green-500/20 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
+          >
+            <i class="fas fa-plus-circle text-xl text-green-400 mb-2"></i>
+            <h3 class="text-base font-semibold">Add New Movie</h3>
+            <p class="text-sm text-white/60 mt-1 relative z-10">
+              Expand your collection
+            </p>
           </div>
 
-          <!-- Add New Movie -->
-          <div class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-green-500/20 hover:to-emerald-500/20 hover:border-green-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-green-500/0 to-emerald-500/0 group-hover:from-green-500/10 grouperaver:to-emerald-500/10 transition-all duration-300"></div>
-            <i class="fas fa-plus-circle text-2xl text-green-400 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
-            <h3 class="text-lg font-semibold relative z-10">Add New Movie</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">Expand your collection</p>
+          <!-- Add Movie Modal -->
+          <div
+            id="addMovieModal"
+            class="modal fixed inset-0 z-50 mt-[20px] ml-[10px] hidden w-[1000px] h-[200px] "
+          >
+            <div class="modal-backdrop absolute inset-0 bg-opacity-50"></div>
+            <div
+              class="relative min-h-screen flex items-center justify-center p-4"
+            >
+              <div
+                class="modal-content bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700"
+              >
+                <!-- Modal Header -->
+                <div
+                  class="flex items-center justify-between p-6 border-b border-gray-700 "
+                >
+                  <h3 class="text-xl font-bold text-white">Add New Movie</h3>
+                  <button
+                    id="closeModal"
+                    class="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Modal Body -->
+                <form id="addMovieForm" class="p-6 space-y-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Movie Title</label
+                    >
+                    <input
+                      type="text"
+                      id="movieTitle"
+                      required
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="Enter movie title"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Release Year</label
+                    >
+                    <input
+                      type="number"
+                      id="movieYear"
+                      min="1900"
+                      max="2025"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="e.g., 2023"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Genre</label
+                    >
+                    <select
+                      id="movieGenre"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    >
+                      <option value="">Select Genre</option>
+                      <option value="Action">Action</option>
+                      <option value="Comedy">Comedy</option>
+                      <option value="Drama">Drama</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+                      <option value="Sci-Fi">Sci-Fi</option>
+                      <option value="Thriller">Thriller</option>
+                      <option value="Adventure">Adventure</option>
+                      <option value="Animation">Animation</option>
+                      <option value="Documentary">Documentary</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Director</label
+                    >
+                    <input
+                      type="text"
+                      id="movieDirector"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="Director name"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Rating (1-10)</label
+                    >
+                    <input
+                      type="number"
+                      id="movieRating"
+                      min="1"
+                      max="10"
+                      step="0.1"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="e.g., 8.5"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Poster URL (Optional)</label
+                    >
+                    <input
+                      type="url"
+                      id="moviePoster"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      placeholder="https://example.com/poster.jpg"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2"
+                      >Description</label
+                    >
+                    <textarea
+                      id="movieDescription"
+                      rows="3"
+                      class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                      placeholder="Brief description of the movie..."
+                    ></textarea>
+                  </div>
+
+                  <!-- Auto-fetch toggle -->
+                  <div class="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      id="autoFetch"
+                      class="rounded border-gray-600 text-red-600 focus:ring-red-500"
+                    />
+                    <label for="autoFetch" class="text-sm text-gray-300"
+                      >Auto-fetch movie details from API</label
+                    >
+                  </div>
+                </form>
+
+                <!-- Modal Footer -->
+                <div
+                  class="flex items-center justify-end space-x-3 p-6 border-t border-gray-700"
+                >
+                  <button
+                    id="cancelBtn"
+                    class="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    id="fetchDetailsBtn"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Fetch Details
+                  </button>
+                  <button
+                    id="addMovieSubmit"
+                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Add Movie
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Statistics -->
-          <div class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-300"></div>
-            <i class="fas fa-chart-bar text-2xl text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+          <div
+            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-300"
+            ></div>
+            <i
+              class="fas fa-chart-bar text-2xl text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300"
+            ></i>
             <h3 class="text-lg font-semibold relative z-10">Statistics</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">View your analytics</p>
+            <p class="text-sm text-white/60 mt-1 relative z-10">
+              View your analytics
+            </p>
           </div>
 
           <!-- Additional Options -->
           <div class="mt-8 pt-6 border-t border-white/10">
-            <h3 class="text-lg font-semibold mb-4 text-white/80">Quick Actions</h3>
+            <h3 class="text-lg font-semibold mb-4 text-white/80">
+              Quick Actions
+            </h3>
             <div class="space-y-3">
-              <button class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3">
+              <button
+                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+              >
                 <i class="fas fa-heart text-red-400"></i>
                 <span>Favorites</span>
               </button>
-              <button class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3">
+              <button
+                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+              >
                 <i class="fas fa-history text-purple-400"></i>
                 <span>Recently Watched</span>
               </button>
-              <button class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3">
+              <button
+                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+              >
                 <i class="fas fa-star text-yellow-400"></i>
                 <span>Top Rated</span>
               </button>
@@ -162,41 +461,67 @@
           id="watchlist"
           class="flex flex-col gap-8 w-full max-w-6xl text-white h-full hidden"
         >
-          <div class="flex text-4xl font-bold w-full border-b border-white/20 pb-4 items-center justify-between">
-            <h2 class="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+          <div
+            class="flex text-4xl font-bold w-full border-b border-white/20 pb-4 items-center justify-between"
+          >
+            <h2
+              class="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
+            >
               Your Watch Later List
             </h2>
-            <button class="text-2xl text-white/60 hover:text-red-400 transition-colors duration-300 hover:scale-110 transform">
+            <button
+              class="text-2xl text-white/60 hover:text-red-400 transition-colors duration-300 hover:scale-110 transform"
+            >
               <i class="fa-regular fa-pen-to-square"></i>
             </button>
           </div>
           <ul id="movieList" class="space-y-5"></ul>
-          
+
           <!-- Empty State -->
-          <div id="empty" class="flex flex-col items-center justify-center py-16 text-center opacity-60">
+          <div
+            id="empty"
+            class="flex flex-col items-center justify-center py-16 text-center opacity-60"
+          >
             <i class="fas fa-film text-6xl text-white/30 mb-4"></i>
-            <h3 class="text-2xl font-semibold mb-2 text-white/70">No movies in watchlist</h3>
-            <p class="text-white/50">Start adding movies to build your personal collection</p>
+            <h3 class="text-2xl font-semibold mb-2 text-white/70">
+              No movies in watchlist
+            </h3>
+            <p class="text-white/50">
+              Start adding movies to build your personal collection
+            </p>
           </div>
         </div>
 
         <!-- Welcome Screen -->
-        <div id="welcome" class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-16" id="welcomeScreen">
+        <div
+          id="welcome"
+          class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-16"
+          id="welcomeScreen"
+        >
           <div class="relative mb-8">
             <i class="fas fa-film text-8xl text-red-500/30"></i>
-            <div class="absolute inset-0 bg-red-500/10 blur-3xl rounded-full scale-150"></div>
+            <div
+              class="absolute inset-0 bg-red-500/10 blur-3xl rounded-full scale-150"
+            ></div>
           </div>
-          <h1 class="text-6xl font-black mb-6 bg-gradient-to-r from-white via-red-400 to-pink-500 bg-clip-text text-transparent">
+          <h1
+            class="text-6xl font-black mb-6 bg-gradient-to-r from-white via-red-400 to-pink-500 bg-clip-text text-transparent"
+          >
             Welcome to CineME
           </h1>
           <p class="text-xl text-white/70 mb-8 leading-relaxed">
-            Your personal movie dashboard where you can organize, track, and discover your favorite films.
+            Your personal movie dashboard where you can organize, track, and
+            discover your favorite films.
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
-            <button class="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-red-500/25">
+            <button
+              class="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-red-500/25"
+            >
               Explore Movies
             </button>
-            <button class="px-8 py-4 bg-white/10 backdrop-blur-md rounded-2xl font-semibold text-white border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
+            <button
+              class="px-8 py-4 bg-white/10 backdrop-blur-md rounded-2xl font-semibold text-white border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300"
+            >
               View Statistics
             </button>
           </div>
@@ -204,8 +529,8 @@
       </div>
     </main>
 
-
     <script src="../js/api.js"></script>
     <script src="../js/watchlater.js"></script>
+    <script src="../js/Addmovie.js"></script>
   </body>
 </html>
