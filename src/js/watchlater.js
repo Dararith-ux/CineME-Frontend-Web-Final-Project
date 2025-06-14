@@ -3,9 +3,11 @@ const movieList = document.getElementById("movieList");
 const watchlist = document.getElementById("watchlist");
 const watchlistButton = document.getElementById("watchLaterBtn");
 const welcomepage = document.getElementById("welcome");
+const Addmodal = document.getElementById("addMovieModal");
 const emptystate = document.getElementById("empty");
 watchlistButton.addEventListener("click", () => {
   watchlist.classList.remove("hidden");
+  Addmodal.classList.add("hidden");
   welcomepage.classList.add("hidden");
   emptystate.classList.add("hidden");
 });
@@ -21,7 +23,7 @@ https://api.themoviedb.org/3/movie/${movieID}?api_key=${api_key}`;
       "bg-white/10 border border-white/20 rounded-lg p-4 hover:bg-white/20 transition duration-300 flex justify-between items-center px-[50px]";
     li.innerHTML = `
       <div class="flex flex-col sm:flex-row items-center sm:items-start sm:gap-4 gap-6 text-center sm:text-left">
-        <img class="w-[150px] max-w-full rounded-lg" src="https://image.tmdb.org/t/p/w300${
+        <img class="h-[150px] max-w-full rounded-lg" src="https://image.tmdb.org/t/p/w300${
           data.poster_path
         }" alt="${data.title}" />
         <div class="flex flex-col gap-1">
@@ -42,11 +44,6 @@ https://api.themoviedb.org/3/movie/${movieID}?api_key=${api_key}`;
       <button class="mt-4 sm:mt-0 bg-green-500 text-black px-4 py-2 sm:px-5 sm:py-3 text-sm sm:text-base md:text-lg font-semibold rounded-lg transition duration-300 hover:bg-green-600">
         Watch now
       </button>
-    <!-- Top-right close button inside the watchlist -->
-<div class="flex justify-end">
-  
-</div>
-
     `;
     movieList.appendChild(li);
   });

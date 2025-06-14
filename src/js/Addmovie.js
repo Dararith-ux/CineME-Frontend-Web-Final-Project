@@ -1,19 +1,23 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     const openBtn = document.getElementById("addMovieCard");
-    const modal = document.getElementById("addMovieModal");
+    const Addmodal = document.getElementById("addMovieModal");
     const closeBtn = document.getElementById("closeModal");
     const cancelBtn = document.getElementById("cancelBtn");
+    const welcomepage = document.getElementById("welcome");
+    const watchlist = document.getElementById("watchlist");
 
     // Open modal on button click
     openBtn.addEventListener("click", () => {
-      modal.classList.remove("hidden");
+      Addmodal.classList.remove("hidden");
+      welcomepage.classList.add("hidden");
+      watchlist.classList.add("hidden");
     });
 
     // Close modal on X or Cancel
     [closeBtn, cancelBtn].forEach((btn) => {
       btn.addEventListener("click", () => {
-        modal.classList.add("hidden");
+        Addmodal.classList.add("hidden");
       });
     });
   });
