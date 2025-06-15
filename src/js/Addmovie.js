@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const movie = {
+  id: Date.now(),
   title: title,
   releaseDate: `01 January ${year}`,
   poster: poster || "https://via.placeholder.com/270x380?text=No+Image",
@@ -64,53 +65,6 @@ localStorage.setItem("customMovies", JSON.stringify(movies));
 });
 
 
-    // // Format
-    // const formattedDate = `01 ${new Date().toLocaleString('en-US', { month: 'long' })} ${year}`;
-    // const posterURL = poster || "https://via.placeholder.com/270x380?text=No+Image";
-
-    // // Create movie card element
-    // const movieCard = document.createElement("div");
-    // movieCard.className = "flex flex-col w-[270px] h-[460px] mb-[20px]";
-    // movieCard.innerHTML = `
-    //   <img
-    //     src="${posterURL}"
-    //     alt="${title}"
-    //     class="w-full h-[380px] object-cover rounded-xl shadow-xl"
-    //   />
-    //   <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
-    //     <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedDate}</h1>
-    //     <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${title}</h1>
-    //   </div>
-    // `;
-
-    // // Insert at the beginning of the grid
-    // container.insertBefore(movieCard, container.firstChild);
-
-    // // Optional: Reset form
-    // // document.getElementById("addMovieForm").reset();
 
 
-    // // Format
-    // const formattedDate = `01 ${new Date().toLocaleString('en-US', { month: 'long' })} ${year}`;
-    // const posterURL = poster || "https://via.placeholder.com/270x380?text=No+Image";
 
-    // // Create movie card element
-    // const movieCard = document.createElement("div");
-    // movieCard.className = "flex flex-col w-[270px] h-[460px] mb-[20px]";
-    // movieCard.innerHTML = `
-    //   <img
-    //     src="${posterURL}"
-    //     alt="${title}"
-    //     class="w-full h-[380px] object-cover rounded-xl shadow-xl"
-    //   />
-    //   <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
-    //     <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedDate}</h1>
-    //     <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${title}</h1>
-    //   </div>
-    // `;
-
-    // // Insert at the beginning of the grid
-    // container.insertBefore(movieCard, container.firstChild);
-
-    // // Optional: Reset form
-    // // document.getElementById("addMovieForm").reset();
