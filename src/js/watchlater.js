@@ -23,7 +23,7 @@ function createDeleteModal() {
       </div>
       
       <p class="text-gray-300 mb-6" id="deleteModalText">
-        Are you sure you want to remove this movie from your watchlist?
+        Are you sure you want to remove this movie from your watch later list?
       </p>
       
       <div class="flex gap-3 justify-end">
