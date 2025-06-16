@@ -14,9 +14,11 @@
   </head>
   <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
     <header class="w-full py-4 px-6">
-  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0 my-2 border-b pb-4 border-gray-200 px-4">
-    <!-- Logo -->
-    <div class="flex items-center space-x-2">
+      <div
+        class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0 my-2 border-b pb-4 border-gray-200 px-4"
+      >
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
           <i class="fas fa-film text-red-500 text-2xl"></i>
           <h1
             class="text-3xl font-extrabold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
@@ -25,78 +27,135 @@
           </h1>
         </div>
 
-    <!-- Navigation -->
-    <nav class="hidden md:flex items-center space-x-6 px-[50px]">
-      <a href="#" class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300">Home</a>
-      <a href="./dashbaord.html" class="text-white hover:text-red-400 font-medium transition-colors duration-300">Dashboard</a>
-    </nav>
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center space-x-6 px-[50px]">
+          <a
+            href="#"
+            class="nav-item text-white hover:text-red-400 font-medium transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="./dashbaord.html"
+            class="text-white hover:text-red-400 font-medium transition-colors duration-300"
+            >Dashboard</a
+          >
+        </nav>
 
-    <!-- Search Bar -->
-    <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
-      <div class="relative">
-        <input
-          type="text"
-          placeholder="Search movie"
-          class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400"
-        />
-        <button
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+        <!-- Search Bar -->
+        <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Search movie"
+              class="search-input w-full px-4 py-2 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-red-400"
+            />
+            <button
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
 
-    <!-- Right Side Icons -->
-    <div class="flex items-center space-x-4">
-      <!-- Theme Toggle -->
-      <button
-        id="themeToggle"
-        class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-        title="Toggle Day/Night Mode"
-      >
-        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-          </path>
-        </svg>
-        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-          </path>
-        </svg>
-      </button>
+        <!-- Right Side Icons -->
+        <div class="flex items-center space-x-4">
+          <!-- Theme Toggle -->
+          <button
+            id="themeToggle"
+            class="theme-toggle p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+            title="Toggle Day/Night Mode"
+          >
+            <svg
+              id="sunIcon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+            <svg
+              id="moonIcon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
+            </svg>
+          </button>
 
-      <!-- User Profile -->
-      <div class="flex items-center space-x-2">
-        <span class="text-white font-medium hidden sm:block">Dararith PISETH</span>
-        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold">
-          D
+          <!-- User Profile -->
+          <div class="flex items-center space-x-2">
+            <span class="text-white font-medium hidden sm:block"
+              >Dararith PISETH</span
+            >
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-red-400 to-pink-400 flex items-center justify-center text-white font-bold"
+            >
+              D
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-white p-2" id="mobileMenuBtn">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden text-white p-2" id="mobileMenuBtn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="md:hidden mt-4 hidden" id="mobileMenu">
-    <div class="flex flex-col space-y-2 bg-black/20 backdrop-blur-sm rounded-lg p-4">
-      <a href="#" class="text-white hover:text-red-400 py-2 transition-colors duration-300">Home</a>
-      <a href="./dashbaord.html" class="text-white hover:text-red-400 py-2 transition-colors duration-300">Dashboard</a>
-    </div>
-  </div>
-</header>
-
+      <!-- Mobile Menu -->
+      <div class="md:hidden mt-4 hidden" id="mobileMenu">
+        <div
+          class="flex flex-col space-y-2 bg-black/20 backdrop-blur-sm rounded-lg p-4"
+        >
+          <a
+            href="#"
+            class="text-white hover:text-red-400 py-2 transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="./dashbaord.html"
+            class="text-white hover:text-red-400 py-2 transition-colors duration-300"
+            >Dashboard</a
+          >
+        </div>
+      </div>
+    </header>
 
     <main class="w-full py-4 px-6">
       <div class="flex items-center flex-col">
@@ -112,13 +171,8 @@
         </h1>
 
         <img
-
-          class="rounded-[20px] mt-4 mx-auto 
-          w-[100%] sm:w-[95%] md:w-[700px] lg:w-[1000px] xl:w-[1270px] 
-          h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]"
-
+          class="rounded-[20px] mt-4 mx-auto w-[100%] sm:w-[95%] md:w-[700px] lg:w-[1000px] xl:w-[1270px] h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]"
           class="rounded-[20px] w-[1270px] h-[650px] mt-4"
-
           src="https://i.pinimg.com/736x/cc/85/60/cc8560ed3509e2e1ada91f3f327ee04c.jpg"
           alt="Movie poster"
         />
@@ -243,14 +297,33 @@
           <!-- Now Showing Section -->
           <div class="mt-16">
             <div class="flex items-center justify-between gap-20 mb-8">
-              <button id="nowShowing" class="tab-button text-2xl px-4 py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400 ">Now Showing</button>
-              <button id="addedMovie" class="tab-button px-4 text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400 ">Added Movie</button>
-              <!-- Search Bar -->
-              
+              <button
+                id="nowShowing"
+                class="tab-button text-2xl px-4 py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+              >
+                Now Showing
+              </button>
+              <button
+                id="addedMovie"
+                class="tab-button px-4 text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+              >
+                Added Movie
+              </button>
+            </div>
+            <div id="editBtn" class="flex justify-end hidden">
+              <button class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600">
+                <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> 
+                <p>
+                  Edit your added list
+                </p>
+              </button>
             </div>
 
             <!-- Movie Slots Section -->
-            <div class="flex flex-wrap justify-center space-x-4 mb-8">
+            <div
+              id="pageBtn"
+              class="flex flex-wrap justify-center space-x-4 mb-8"
+            >
               <div
                 class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold border-2 border-yellow-500 mb-4 w-28 text-center"
               >
@@ -284,6 +357,10 @@
         id="postercontainer"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-2xl mx-auto"
       ></div>
+      <div id="confirmEdit" class="py-[50px] flex gap-[20px] justify-end max-w-7xl mx-auto px-4 hidden" >
+        <button  class="canSave bg-red-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]">Cancel</button>
+        <button  class="canSave bg-green-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]">Save Change</button>
+      </div>
 
       <!-- modal -->
       <div

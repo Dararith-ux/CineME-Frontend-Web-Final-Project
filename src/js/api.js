@@ -7,6 +7,8 @@ const nowShowing = document.getElementById("nowShowing");
 const addedMovie = document.getElementById("addedMovie");
 let movies = [];
 let currentPage = 1;
+let isEditMode = false;
+
 
 // Format release date
 function formatReleaseDate(dateString) {
@@ -17,30 +19,60 @@ function formatReleaseDate(dateString) {
   return `${day} ${month} ${year}`;
 }
 
+function deleteCustomMovie(index) {
+  const movieData = localStorage.getItem("customMovies");
+  if (!movieData) return;
+
+  let movieList = JSON.parse(movieData);
+  movieList.splice(index, 1);
+
+  localStorage.setItem("customMovies", JSON.stringify(movieList));
+  renderCustomMovie(); // 👈 this will re-show with delete buttons if isEditMode is true
+}
+
+
 // Render custom movies from localStorage
 function renderCustomMovie() {
   cardcontainer.innerHTML = "";
   const movieData = localStorage.getItem("customMovies");
   if (!movieData) return;
+
   const movieList = JSON.parse(movieData);
-  movieList.forEach((movie) => {
+
+  movieList.forEach((movie, index) => {
     const card = document.createElement("div");
-    card.classList = "flex flex-col w-[270px] h-[460px] mb-[20px]";
+    card.className = "flex flex-col w-[270px] h-[460px] mb-[20px] relative";
+
     card.innerHTML = `
+      ${isEditMode ? `<button class="delete-btn absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm" data-index="${index}">✖</button>` : ""}
       <img src="${movie.poster}" alt="${movie.title}" class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer"/>
       <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
         <h1 class="text-yellow-500 text-xl font-mulish-medium">${movie.releaseDate}</h1>
         <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${movie.title}</h1>
-      </div>`;
+      </div>
+    `;
     cardcontainer.appendChild(card);
   });
+
+  // ✅ Bind delete buttons (important)
+  if (isEditMode) {
+    document.querySelectorAll(".delete-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.getAttribute("data-index"));
+        deleteCustomMovie(index);
+      });
+    });
+  }
 }
+
 
 // Load movies from TMDB
 function loadPage(page) {
   if (page < 1) return;
   currentPage = page;
-  fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${page}`)
+  fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${page}`
+  )
     .then((res) => res.json())
     .then((data) => {
       movies = data.results;
@@ -111,11 +143,17 @@ function openModal(index) {
   document.body.style.overflow = "hidden";
 
   document.getElementById("modal-movieTitle").innerText = movie.title;
-  document.getElementById("modal-moviePoster").src = `${imgsrc}${movie.poster_path}`;
+  document.getElementById(
+    "modal-moviePoster"
+  ).src = `${imgsrc}${movie.poster_path}`;
   document.getElementById("modal-movieDate").innerText = formattedDate;
-  document.getElementById("modal-movieRate").innerText = `${movie.vote_average} / 10`;
+  document.getElementById(
+    "modal-movieRate"
+  ).innerText = `${movie.vote_average} / 10`;
   document.getElementById("modal-movieOverview").innerText = movie.overview;
-  document.getElementById("modal-movieLang").innerText = `Language: ${movie.original_language.toUpperCase()}`;
+  document.getElementById(
+    "modal-movieLang"
+  ).innerText = `Language: ${movie.original_language.toUpperCase()}`;
   document.getElementById("add_to_watchlater").onclick = function () {
     add_to_watchlater(movie.id);
   };
@@ -127,7 +165,9 @@ function openModal(index) {
   const oldFallback = trailerContainer.querySelector(".no-trailer");
   if (oldFallback) oldFallback.remove();
 
-  fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`)
+  fetch(
+    `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`
+  )
     .then((res) => res.json())
     .then((videoData) => {
       const trailer = videoData.results.find(
@@ -139,7 +179,8 @@ function openModal(index) {
         iframe.classList.add("hidden");
         const fallback = document.createElement("div");
         fallback.textContent = "🎬 No trailer available for this movie.";
-        fallback.className = "no-trailer text-center text-cyan-300 text-lg mt-4";
+        fallback.className =
+          "no-trailer text-center text-cyan-300 text-lg mt-4";
         trailerContainer.appendChild(fallback);
       }
     })
@@ -160,10 +201,18 @@ function setActiveTab(activeId) {
   const tabs = [nowShowing, addedMovie];
   tabs.forEach((tab) => {
     if (tab.id === activeId) {
-      tab.classList.add("border-yellow-400", "text-yellow-400", "font-semibold");
+      tab.classList.add(
+        "border-yellow-400",
+        "text-yellow-400",
+        "font-semibold"
+      );
       tab.classList.remove("border-transparent", "text-white");
     } else {
-      tab.classList.remove("border-yellow-400", "text-yellow-400", "font-semibold");
+      tab.classList.remove(
+        "border-yellow-400",
+        "text-yellow-400",
+        "font-semibold"
+      );
       tab.classList.add("border-transparent", "text-white");
     }
   });
@@ -180,13 +229,32 @@ document.querySelectorAll(".page-button").forEach((btn) => {
 // Toggle between TMDB and Custom Movies
 nowShowing.addEventListener("click", () => {
   cardcontainer.innerHTML = "";
+  document.getElementById("pageBtn").classList.remove("hidden");
+  document.getElementById("editBtn").classList.add("hidden");
   loadPage(currentPage);
   setActiveTab("nowShowing");
 });
 addedMovie.addEventListener("click", () => {
+  document.getElementById("pageBtn").classList.add("hidden");
+  document.getElementById("editBtn").classList.remove("hidden");
   renderCustomMovie();
   setActiveTab("addedMovie");
 });
+
+document.getElementById("editBtn").addEventListener("click", () => {
+  isEditMode = true;
+  document.getElementById("confirmEdit").classList.remove("hidden");
+  renderCustomMovie(); // 🔁 Re-render to show delete buttons
+});
+
+document.querySelectorAll(".canSave").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    isEditMode = false;
+    document.getElementById("confirmEdit").classList.add("hidden");
+    renderCustomMovie(); // 🔁 Re-render to hide delete buttons
+  });
+});
+
 // Initial load
 window.onload = function () {
   watch_later = getCookieArray("watch_later");
