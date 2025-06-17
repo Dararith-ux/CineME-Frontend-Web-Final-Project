@@ -14,7 +14,7 @@
   </head>
   <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
     <header
-      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
+      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl "
     >
       <div
         class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
@@ -38,20 +38,23 @@
         <nav class="hidden md:flex items-center space-x-8 px-[40px]">
           <a
             href="./homepage.html"
-            class="relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
+            id="homeLink"
+            class="nav-link relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
           >
             Home
             <span
-              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
+              class="underline-span absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
             ></span>
           </a>
+
           <a
             href="./dashbaord.html"
-            class="relative text-white font-semibold transition-all duration-300 group border-b-2 border-red-500"
+            id="dashboardLink"
+            class="nav-link relative text-white font-semibold transition-all duration-300 group"
           >
             Dashboard
             <span
-              class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 to-pink-500"
+              class="underline-span absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
             ></span>
           </a>
         </nav>
@@ -173,18 +176,19 @@
           href="./homepage.html"
           class="text-white/90 hover:text-white font-medium"
           >Home</a
-        >   
-        <a href="./dashbaord.html" class="text-white font-medium border-b-2 border-red-500"
+        >
+        <a
+          href="./dashbaord.html"
+          class="text-white font-medium border-b-2 border-red-500"
           >Dashboard</a
         >
       </nav>
     </header>
 
-
     <main class="w-full py-4 px-6">
       <div class="flex items-center flex-col">
         <h1
-          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center pt-20"
         >
           Dive into each movie and discover the best
         </h1>
@@ -207,94 +211,92 @@
         <div class="text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
           Most Popular Movie
         </div>
-          <!-- Banner Section  -->
-          <section class="2xl:w-[1250px] xl:w-[1024px] lg:[768px]">
-            <!-- Banner Container -->
+        <!-- Banner Section  -->
+        <section class="2xl:w-[1250px] xl:w-[1024px] lg:[768px]">
+          <!-- Banner Container -->
+          <div
+            class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
+            id="bannerContainer"
+          >
+            <!-- Banner Slides 1-->
             <div
-              class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
-              id="bannerContainer"
+              class="banner-slide banner-transition absolute inset-0 opacity-100"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(75, 0, 130, 0.4)
+                  ),
+                  url('../img/image.png');
+              "
             >
-              <!-- Banner Slides 1-->
+              <div class="gradient-overlay absolute inset-0"></div>
               <div
-                class="banner-slide banner-transition absolute inset-0 opacity-100"
-                style="
-                  background-image: linear-gradient(
-                      45deg,
-                      rgba(0, 0, 0, 0.6),
-                      rgba(75, 0, 130, 0.4)
-                    ),
-                    url('../img/image.png');
-                "
+                class="relative z-10 h-full flex items-center justify-center"
               >
-                <div class="gradient-overlay absolute inset-0"></div>
-                <div
-                  class="relative z-10 h-full flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <h2 class="text-5xl font-bold mb-4">
-                      Adventure and romance 
-                    </h2>
-                    <h3 class="text-3xl mb-4">ENDGAME</h3>
-                    <p class="text-lg opacity-80 max-w-md">
-                      Maverick (2022) is an action-drama where Maverick trains a
-                      new generation of pilots for a dangerous mission.
-                    </p>
-                  </div>
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">Adventure and romance</h2>
+                  <h3 class="text-3xl mb-4">ENDGAME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Maverick (2022) is an action-drama where Maverick trains a
+                    new generation of pilots for a dangerous mission.
+                  </p>
                 </div>
               </div>
-              <!-- Banner Slides 2-->
+            </div>
+            <!-- Banner Slides 2-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(139, 0, 0, 0.4)
+                  ),
+                  url('https://cdn.marvel.com/content/1x/captainamericabravenewworld_lob_crd_05.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
               <div
-                class="banner-slide banner-transition absolute inset-0 opacity-0"
-                style="
-                  background-image: linear-gradient(
-                      45deg,
-                      rgba(0, 0, 0, 0.6),
-                      rgba(139, 0, 0, 0.4)
-                    ),
-                    url('https://cdn.marvel.com/content/1x/captainamericabravenewworld_lob_crd_05.jpg');
-                "
+                class="relative z-10 h-full flex items-center justify-center"
               >
-                <div class="gradient-overlay absolute inset-0"></div>
-                <div
-                  class="relative z-10 h-full flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <h2 class="text-5xl font-bold mb-4">superhero</h2>
-                    <h3 class="text-3xl mb-4">NO WAY HOME</h3>
-                    <p class="text-lg opacity-80 max-w-md">
-                      Brave New World (2025) follows Sam Wilson as the new Captain
-                      America, facing new challenges and enemies.
-                    </p>
-                  </div>
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">superhero</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Brave New World (2025) follows Sam Wilson as the new Captain
+                    America, facing new challenges and enemies.
+                  </p>
                 </div>
               </div>
-              <!-- Banner Slides 3-->
+            </div>
+            <!-- Banner Slides 3-->
+            <div
+              class="banner-slide banner-transition absolute inset-0 opacity-0"
+              style="
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.6),
+                    rgba(2, 10, 50, 0.4)
+                  ),
+                  url('https://s1.thcdn.com/design-assets/products/13508485/13508485/No%20way%20home%20banner.jpg');
+              "
+            >
+              <div class="gradient-overlay absolute inset-0"></div>
               <div
-                class="banner-slide banner-transition absolute inset-0 opacity-0"
-                style="
-                  background-image: linear-gradient(
-                      45deg,
-                      rgba(0, 0, 0, 0.6),
-                      rgba(2, 10, 50, 0.4)
-                    ),
-                    url('https://s1.thcdn.com/design-assets/products/13508485/13508485/No%20way%20home%20banner.jpg');
-                "
+                class="relative z-10 h-full flex items-center justify-center"
               >
-                <div class="gradient-overlay absolute inset-0"></div>
-                <div
-                  class="relative z-10 h-full flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <h2 class="text-5xl font-bold mb-4">Spider-Man</h2>
-                    <h3 class="text-3xl mb-4">NO WAY HOME</h3>
-                    <p class="text-lg opacity-80 max-w-md">
-                      Peter Parker sacrifices his personal life by making everyone
-                      forget his identity to protect his loved ones, leaving him
-                      isolated but committed to being Spider-Man.
-                    </p>
-                  </div>
+                <div class="text-center text-white">
+                  <h2 class="text-5xl font-bold mb-4">Spider-Man</h2>
+                  <h3 class="text-3xl mb-4">NO WAY HOME</h3>
+                  <p class="text-lg opacity-80 max-w-md">
+                    Peter Parker sacrifices his personal life by making everyone
+                    forget his identity to protect his loved ones, leaving him
+                    isolated but committed to being Spider-Man.
+                  </p>
                 </div>
               </div>
+            </div>
 
             <!-- Navigation Arrows -->
             <button
@@ -335,11 +337,11 @@
               </button>
             </div>
             <div id="editBtn" class="flex justify-end hidden">
-              <button class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600">
-                <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> 
-                <p>
-                  Edit your added list
-                </p>
+              <button
+                class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600"
+              >
+                <i class="fa-solid fa-pen-to-square" style="color: #ffffff"></i>
+                <p>Edit your added list</p>
               </button>
             </div>
 
@@ -381,9 +383,20 @@
         id="postercontainer"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-2xl mx-auto"
       ></div>
-      <div id="confirmEdit" class="py-[50px] flex gap-[20px] justify-end max-w-7xl mx-auto px-4 hidden" >
-        <button  class="canSave bg-red-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]">Cancel</button>
-        <button  class="canSave bg-green-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]">Save Change</button>
+      <div
+        id="confirmEdit"
+        class="py-[50px] flex gap-[20px] justify-end max-w-7xl mx-auto px-4 hidden"
+      >
+        <button
+          class="canSave bg-red-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]"
+        >
+          Cancel
+        </button>
+        <button
+          class="canSave bg-green-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]"
+        >
+          Save Change
+        </button>
       </div>
 
       <!-- modal -->
