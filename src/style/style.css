@@ -44,18 +44,36 @@
     .theme-toggle:hover {
     transform: scale(1.1);
     }
-    /* Custom Banner Transition */
-    .banner-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
     .banner-slide {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: opacity 1ms ease-in-out;
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      animation: bannerFade 12s infinite;
+      transition: opacity 1s ease-in-out;
     }
-
+  
+    .banner-slide:nth-child(1) {
+      animation-delay: 0s;
+    }
+  
+    .banner-slide:nth-child(2) {
+      animation-delay: 4s;
+    }
+  
+    .banner-slide:nth-child(3) {
+      animation-delay: 8s;
+    }
+  
+    @keyframes bannerFade {
+      0% { opacity: 0; }
+      5% { opacity: 1; }
+      30% { opacity: 1; }
+      35% { opacity: 0; }
+      100% { opacity: 0; }
+    }
     .gradient-overlay {
     background: linear-gradient(
         45deg,
