@@ -136,7 +136,7 @@ nextBtn.addEventListener("click", (e) => {
 });
 
 // Auto-advance every 5 seconds
-setInterval(nextSlide, 5000);
+setInterval(nextSlide, 3000);
 
 // Initialize
 showSlide(0);
@@ -223,3 +223,9 @@ document.addEventListener("keydown", function (event) {
 });
 
 // ADD THE WATCH LATER, LET SEE HOW IT WORK BECAUSE I HAVE NO IDEA.
+
+
+
+
+
+
