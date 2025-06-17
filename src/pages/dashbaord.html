@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CineME Dashboard</title>
-    <link rel="stylesheet" href="../style/style.css" />
-    <link rel="stylesheet" href="../style/Movie.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://kit.fontawesome.com/5ce14b4205.js"
@@ -19,28 +17,30 @@
   >
     <!-- Header -->
     <header
-      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl "
+      class="w-full py-3 md:py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-4 md:px-6 fixed z-30 shadow-xl"
     >
       <div
-        class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
+        class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 md:gap-4"
       >
         <!-- Logo -->
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-2 md:space-x-3">
           <div class="relative">
-            <i class="fas fa-film text-red-500 text-3xl drop-shadow-lg"></i>
+            <i
+              class="fas fa-film text-red-500 text-2xl md:text-3xl drop-shadow-lg"
+            ></i>
             <div
               class="absolute inset-0 bg-red-500/20 blur-xl rounded-full scale-150"
             ></div>
           </div>
           <h1
-            class="text-3xl md:text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+            class="text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
           >
             CineME
           </h1>
         </div>
 
         <!-- Navigation (Desktop) -->
-        <nav class="hidden md:flex items-center space-x-8 px-[40px]">
+        <nav class="hidden lg:flex items-center space-x-8 px-[40px]">
           <a
             href="./homepage.html"
             class="relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
@@ -52,7 +52,7 @@
           </a>
           <a
             href="./dashbaord.html"
-            class="relative text-white font-semibold transition-all duration-300 group "
+            class="relative text-white font-semibold transition-all duration-300 group"
           >
             Dashboard
             <span
@@ -62,18 +62,21 @@
         </nav>
 
         <!-- Search Bar -->
-        <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
+        <div
+          id="searchBar"
+          class="w-full lg:flex-1 lg:max-w-md mx-auto order-3 lg:order-none mt-2 lg:mt-0"
+        >
           <div class="relative group">
             <input
               type="text"
               placeholder="Search movies, actors, genres..."
-              class="w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
+              class="w-full px-4 md:px-6 py-2 md:py-3 pr-12 md:pr-14 rounded-xl md:rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg text-sm md:text-base"
             />
             <button
-              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110"
+              class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110"
             >
               <svg
-                class="w-5 h-5"
+                class="w-4 h-4 md:w-5 md:h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -87,12 +90,11 @@
               </svg>
             </button>
             <div
-              class="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+              class="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
             ></div>
           </div>
         </div>
 
-        <!-- Right Side -->
         <div class="flex items-center space-x-4">
           <!-- Theme Toggle -->
           <button
@@ -130,15 +132,17 @@
             </svg>
           </button>
 
+
           <!-- User Profile -->
           <div
-            class="flex items-center space-x-3 bg-white/5 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/10 transition-all duration-300"
+            class="flex items-center space-x-2 md:space-x-3 bg-white/5 backdrop-blur-md border border-white/20 rounded-lg md:rounded-xl px-2 md:px-4 py-1 md:py-2 hover:bg-white/10 transition-all duration-300"
           >
-            <span class="text-white font-semibold hidden sm:block"
+            <span
+              class="text-white font-semibold hidden sm:block text-sm md:text-base"
               >Dararith PISETH</span
             >
             <div
-              class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg relative"
+              class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg relative text-sm md:text-base"
             >
               D
               <div
@@ -149,11 +153,11 @@
 
           <!-- Mobile Menu Button -->
           <button
-            class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
             id="mobileMenuBtn"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5 md:w-6 md:h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -172,97 +176,109 @@
       <!-- Mobile Navigation -->
       <nav
         id="mobileMenu"
-        class="md:hidden mt-4 hidden flex flex-col space-y-4 bg-black/80 backdrop-blur-md rounded-xl p-4 text-white border-t border-white/10"
+        class="lg:hidden mt-4 hidden flex flex-col space-y-4 bg-black/80 backdrop-blur-md rounded-xl p-4 text-white border-t border-white/10"
       >
         <a
           href="./homepage.html"
-          class="text-white/90 hover:text-white font-medium"
+          class="text-white/90 hover:text-white font-medium py-2"
           >Home</a
-        >   
-        <a href="./dashbaord.html" class="text-white font-medium border-b-2 border-red-500"
+        >
+        <a
+          href="./dashbaord.html"
+          class="text-white font-medium border-b-2 border-red-500 py-2"
           >Dashboard</a
         >
       </nav>
     </header>
 
     <!-- Main Layout -->
-    <main class="flex min-h-screen">
+    <main class="flex min-h-screen pt-16 md:pt-20 lg:pt-24">
       <!-- Sidebar -->
       <aside
-        class="w-72 fixed top-[88px] left-0 pl-6 pt-6 pb-8 bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl border-r border-white/10"
+        class="w-full sm:w-80 lg:w-72 fixed top-16 md:top-20 lg:top-24 left-0 pl-4 md:pl-6 pt-4 md:pt-6 pb-8 sm:pt-[140px] bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl border-r border-white/10 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-20"
+        id="sidebar"
       >
+        <!-- Sidebar Toggle Button (Mobile) -->
+        <button
+          class="lg:hidden absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+          id="sidebarToggle"
+        >
+          <i class="fas fa-times text-xl"></i>
+        </button>
+
         <h2
-          class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-white to-white/70 bg-clip-text"
+          class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-transparent bg-gradient-to-r from-white to-white/70 bg-clip-text pl-[50px]"
         >
           Library
         </h2>
-        <nav class="flex flex-col space-y-5 pr-6">
+        <nav class="flex flex-col space-y-4 md:space-y-5 pr-4 md:pr-6">
           <!-- Watch Later -->
           <div
             id="watchLaterBtn"
-            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
+            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-xl md:rounded-2xl p-4 md:p-6 hover:scale-105 hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
           >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-red-500/0 to-pink-500/0 group-hover:from-red-500/10 group-hover:to-pink-500/10 transition-all duration-300"
-            ></div>
             <i
-              class="fas fa-clock text-2xl text-red-400 mb-3 group-hover:scale-110 transition-transform duration-300"
+              class="fas fa-clock text-xl md:text-2xl text-red-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300"
             ></i>
-            <h3 class="text-lg font-semibold relative z-10">Watch Later</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">
+            <h3 class="text-base md:text-lg font-semibold relative z-10">
+              Watch Later
+            </h3>
+            <p class="text-xs md:text-sm text-white/60 mt-1 relative z-10">
               Save for later viewing
             </p>
           </div>
 
           <!-- Add New Movie Button -->
-
           <div
             id="addMovieCard"
-            class="bg-white/10 h-[140px] rounded-2xl border border-white/20 p-4 hover:bg-green-500/20 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
+            class="bg-white/10 h-[120px] md:h-[140px] rounded-xl md:rounded-2xl border border-white/20 p-4 hover:bg-green-500/20 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer text-center"
           >
-            <i class="fas fa-plus-circle text-xl text-green-400 mb-2"></i>
-            <h3 class="text-base font-semibold">Add New Movie</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">
+            <i
+              class="fas fa-plus-circle text-lg md:text-xl text-green-400 mb-2"
+            ></i>
+            <h3 class="text-sm md:text-base font-semibold">Add New Movie</h3>
+            <p class="text-xs md:text-sm text-white/60 mt-1 relative z-10">
               Expand your collection
             </p>
           </div>
 
           <!-- Statistics -->
           <div
-            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 hover:scale-105 hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
+            class="group bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-xl md:rounded-2xl p-4 md:p-6 hover:scale-105 hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl cursor-pointer text-center relative overflow-hidden"
           >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-300"
-            ></div>
             <i
-              class="fas fa-chart-bar text-2xl text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300"
+              class="fas fa-chart-bar text-xl md:text-2xl text-blue-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300"
             ></i>
-            <h3 class="text-lg font-semibold relative z-10">Statistics</h3>
-            <p class="text-sm text-white/60 mt-1 relative z-10">
+            <h3 class="text-base md:text-lg font-semibold relative z-10">
+              Statistics
+            </h3>
+            <p class="text-xs md:text-sm text-white/60 mt-1 relative z-10">
               View your analytics
             </p>
           </div>
 
           <!-- Additional Options -->
-          <div class="mt-8 pt-6 border-t border-white/10">
-            <h3 class="text-lg font-semibold mb-4 text-white/80">
+          <div class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/10">
+            <h3
+              class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white/80"
+            >
               Quick Actions
             </h3>
-            <div class="space-y-3">
+            <div class="space-y-2 md:space-y-3">
               <button
-                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+                class="w-full text-left px-3 md:px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3 text-sm md:text-base"
               >
                 <i class="fas fa-heart text-red-400"></i>
                 <span>Favorites</span>
               </button>
               <button
-                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+                class="w-full text-left px-3 md:px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3 text-sm md:text-base"
               >
                 <i class="fas fa-history text-purple-400"></i>
                 <span>Recently Watched</span>
               </button>
               <button
-                class="w-full text-left px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
+                class="w-full text-left px-3 md:px-4 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-3 text-sm md:text-base"
               >
                 <i class="fas fa-star text-yellow-400"></i>
                 <span>Top Rated</span>
@@ -272,18 +288,24 @@
         </nav>
       </aside>
 
+      <!-- Sidebar Overlay (Mobile) -->
+      <div
+        id="sidebarOverlay"
+        class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-10 opacity-0 pointer-events-none transition-opacity duration-300"
+      ></div>
+
       <!-- Right Side Content -->
       <div
         id="mainContent"
-        class="w-full ml-72 p-8 flex justify-center pt-[120px] min-h-screen"
+        class="w-full lg:ml-72 p-4 md:p-6 lg:p-8 flex justify-center pt-4 md:pt-8 min-h-screen"
       >
         <!-- Watch Later List -->
         <div
           id="watchlist"
-          class="flex flex-col gap-8 w-full max-w-6xl text-white h-full hidden"
+          class="flex flex-col gap-6 md:gap-8 w-full max-w-6xl text-white h-full hidden"
         >
           <div
-            class="flex text-4xl font-bold w-full border-b border-white/20 pb-4 items-center justify-between"
+            class="flex text-2xl md:text-3xl lg:text-4xl font-bold w-full border-b border-white/20 pb-3 md:pb-4 items-center justify-between"
           >
             <h2
               class="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
@@ -291,23 +313,25 @@
               Your Watch Later List
             </h2>
             <button
-              class="text-2xl text-white/60 hover:text-red-400 transition-colors duration-300 hover:scale-110 transform"
+              class="text-lg md:text-xl lg:text-2xl text-white/60 hover:text-red-400 transition-colors duration-300 hover:scale-110 transform"
             >
               <i class="fa-regular fa-pen-to-square"></i>
             </button>
           </div>
-          <ul id="movieList" class="space-y-5"></ul>
+          <ul id="movieList" class="space-y-4 md:space-y-5"></ul>
 
           <!-- Empty State -->
           <div
             id="empty"
-            class="flex flex-col items-center justify-center py-16 text-center opacity-60"
+            class="flex flex-col items-center justify-center py-12 md:py-16 text-center opacity-60"
           >
-            <i class="fas fa-film text-6xl text-white/30 mb-4"></i>
-            <h3 class="text-2xl font-semibold mb-2 text-white/70">
+            <i
+              class="fas fa-film text-4xl md:text-5xl lg:text-6xl text-white/30 mb-3 md:mb-4"
+            ></i>
+            <h3 class="text-xl md:text-2xl font-semibold mb-2 text-white/70">
               No movies in watchlist
             </h3>
-            <p class="text-white/50">
+            <p class="text-sm md:text-base text-white/50">
               Start adding movies to build your personal collection
             </p>
           </div>
@@ -316,10 +340,10 @@
         <!-- Add Movie Modal -->
         <div
           id="addMovieModal"
-          class="hidden w-full max-w-6xl text-white flex flex-col gap-8"
+          class="hidden w-full max-w-6xl text-white flex flex-col gap-6 md:gap-8"
         >
           <div
-            class="flex text-4xl font-bold w-full border-b border-white/20 pb-4 items-center justify-between"
+            class="flex text-2xl md:text-3xl lg:text-4xl font-bold w-full border-b border-white/20 pb-3 md:pb-4 items-center justify-between"
           >
             <h2
               class="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
@@ -328,81 +352,73 @@
             </h2>
           </div>
 
-          <form id="addMovieForm" class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Movie Title
-              </label>
-              <input
-                type="text"
-                id="movieTitle"
-                required
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                placeholder="Enter movie title"
-              />
+          <form id="addMovieForm" class="space-y-4 md:space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">
+                  Movie Title
+                </label>
+                <input
+                  type="text"
+                  id="movieTitle"
+                  required
+                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
+                  placeholder="Enter movie title"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">
+                  Release Year
+                </label>
+                <input
+                  type="number"
+                  id="movieYear"
+                  min="1900"
+                  max="2025"
+                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
+                  placeholder="e.g., 2023"
+                />
+              </div>
             </div>
 
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Release Year
-              </label>
-              <input
-                type="number"
-                id="movieYear"
-                min="1900"
-                max="2025"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                placeholder="e.g., 2023"
-              />
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">
+                  Genre
+                </label>
+                <select
+                  id="movieGenre"
+                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
+                >
+                  <option value="">Select Genre</option>
+                  <option value="Action">Action</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Animation">Animation</option>
+                  <option value="Documentary">Documentary</option>
+                </select>
+              </div>
 
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Genre
-              </label>
-              <select
-                id="movieGenre"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-              >
-                <option value="">Select Genre</option>
-                <option value="Action">Action</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Drama">Drama</option>
-                <option value="Horror">Horror</option>
-                <option value="Romance">Romance</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Animation">Animation</option>
-                <option value="Documentary">Documentary</option>
-              </select>
-            </div>
-
-            <!-- <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Director
-              </label>
-              <input
-                type="text"
-                id="movieDirector"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                placeholder="Director name"
-              />
-            </div> -->
-
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Rating (1-10)
-              </label>
-              <input
-                type="number"
-                id="movieRating"
-                min="1"
-                max="10"
-                step="0.1"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                placeholder="e.g., 8.5"
-              />
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">
+                  Rating (1-10)
+                </label>
+                <input
+                  type="number"
+                  id="movieRating"
+                  min="1"
+                  max="10"
+                  step="0.1"
+                  class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
+                  placeholder="e.g., 8.5"
+                />
+              </div>
             </div>
 
             <div>
@@ -412,7 +428,7 @@
               <input
                 type="url"
                 id="moviePoster"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
                 placeholder="https://example.com/poster.jpg"
               />
             </div>
@@ -424,7 +440,7 @@
               <textarea
                 id="movieDescription"
                 rows="3"
-                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none text-sm md:text-base"
                 placeholder="Brief description of the movie..."
               ></textarea>
             </div>
@@ -443,24 +459,24 @@
 
             <!-- Modal Footer -->
             <div
-              class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-700"
+              class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-700 flex-wrap gap-2"
             >
               <button
                 id="cancelBtn"
-                class="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                class="px-4 py-2 text-gray-400 hover:text-white transition-colors text-sm md:text-base"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 id="fetchDetailsBtn"
-                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base"
               >
                 Add
               </button>
               <button
                 id="addMovieSubmit"
-                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base"
               >
                 Cancel
               </button>
@@ -471,32 +487,42 @@
         <!-- Welcome Screen -->
         <div
           id="welcome"
-          class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-16"
-          id="welcomeScreen"
+          class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-12 md:py-16 px-4"
         >
-          <div class="relative mb-8">
-            <i class="fas fa-film text-8xl text-red-500/30"></i>
+          <!-- Hamburger Menu Button (Mobile) -->
+          <button
+            id="hamburgerBtn"
+            class="lg:hidden fixed md:top-[110px] top-[80px] left-4 z-30 text-white p-2 rounded-lg bg-black/20 backdrop-blur-md border border-white/20 hover:bg-white/10 transition-all duration-300"
+          >
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+          <div class="relative mb-6 md:mb-8">
+            <i
+              class="fas fa-film text-6xl md:text-7xl lg:text-8xl text-red-500/30"
+            ></i>
             <div
               class="absolute inset-0 bg-red-500/10 blur-3xl rounded-full scale-150"
             ></div>
           </div>
           <h1
-            class="text-6xl font-black mb-6 bg-gradient-to-r from-white via-red-400 to-pink-500 bg-clip-text text-transparent"
+            class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 md:mb-6 bg-gradient-to-r from-white via-red-400 to-pink-500 bg-clip-text text-transparent"
           >
             Welcome to CineME
           </h1>
-          <p class="text-xl text-white/70 mb-8 leading-relaxed">
+          <p
+            class="text-base md:text-lg lg:text-xl text-white/70 mb-6 md:mb-8 leading-relaxed max-w-2xl"
+          >
             Your personal movie dashboard where you can organize, track, and
             discover your favorite films.
           </p>
-          <div class="flex flex-wrap gap-4 justify-center">
+          <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
             <button
-              class="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-red-500/25"
+              class="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl md:rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-red-500/25 text-sm md:text-base"
             >
               Explore Movies
             </button>
             <button
-              class="px-8 py-4 bg-white/10 backdrop-blur-md rounded-2xl font-semibold text-white border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300"
+              class="px-6 md:px-8 py-3 md:py-4 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl font-semibold text-white border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 text-sm md:text-base"
             >
               View Statistics
             </button>
@@ -504,9 +530,113 @@
         </div>
       </div>
     </main>
+
+    <script>
+      // Sidebar Toggle (Mobile)
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
+      const sidebarToggle = document.getElementById("sidebarToggle");
+
+      function toggleSidebar() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+
+        if (isHidden) {
+          // Show sidebar
+          sidebar.classList.remove("-translate-x-full");
+          sidebar.classList.add("translate-x-0");
+          sidebarOverlay.classList.remove("opacity-0", "pointer-events-none");
+          sidebarOverlay.classList.add("opacity-100");
+          // Prevent body scroll when sidebar is open on mobile
+          document.body.style.overflow = "hidden";
+        } else {
+          // Hide sidebar
+          sidebar.classList.add("-translate-x-full");
+          sidebar.classList.remove("translate-x-0");
+          sidebarOverlay.classList.add("opacity-0", "pointer-events-none");
+          sidebarOverlay.classList.remove("opacity-100");
+          // Restore body scroll
+          document.body.style.overflow = "";
+        }
+      }
+
+      function closeSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebar.classList.remove("translate-x-0");
+        sidebarOverlay.classList.add("opacity-0", "pointer-events-none");
+        sidebarOverlay.classList.remove("opacity-100");
+        document.body.style.overflow = "";
+      }
+
+      function openSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebar.classList.add("translate-x-0");
+        sidebarOverlay.classList.remove("opacity-0", "pointer-events-none");
+        sidebarOverlay.classList.add("opacity-100");
+      }
+
+      // Event listeners
+      hamburgerBtn?.addEventListener("click", toggleSidebar);
+      sidebarToggle?.addEventListener("click", toggleSidebar);
+      sidebarOverlay?.addEventListener("click", closeSidebar);
+
+      // Close sidebar when clicking on sidebar items (mobile)
+      const sidebarItems = sidebar?.querySelectorAll('[id$="Btn"], button');
+      sidebarItems?.forEach((item) => {
+        item.addEventListener("click", () => {
+          if (window.innerWidth < 1024) {
+            setTimeout(closeSidebar, 100); // Small delay for better UX
+          }
+        });
+      });
+
+      // Handle window resize for sidebar
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024) {
+          // Desktop: ensure sidebar is visible and no overlay
+
+          sidebar.classList.remove("-translate-x-full");
+          sidebar.classList.add("translate-x-0");
+          sidebarOverlay.classList.add("opacity-0", "pointer-events-none");
+          sidebarOverlay.classList.remove("opacity-100");
+          document.body.style.overflow = "";
+        } else {
+          // Mobile: ensure sidebar starts hidden
+          sidebar.classList.add("-translate-x-full");
+          sidebar.classList.remove("translate-x-0");
+          sidebarOverlay.classList.add("opacity-0", "pointer-events-none");
+          sidebarOverlay.classList.remove("opacity-100");
+        }
+      });
+      function handleResize() {
+        const searchBar = document.getElementById("searchBar");
+        if (!searchBar) return;
+
+        if (window.innerWidth < 1024) {
+          searchBar.classList.add("hidden");
+        } else {
+          searchBar.classList.remove("hidden");
+        }
+      }
+
+      // Run on page load
+      window.addEventListener("DOMContentLoaded", handleResize);
+
+      // Run on screen resize
+      window.addEventListener("resize", handleResize);
+      // Initialize sidebar state on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.innerWidth >= 1024) {
+          openSidebar();
+          sidebarOverlay.classList.add("opacity-0", "pointer-events-none");
+        } else {
+          closeSidebar();
+        }
+      });
+    </script>
+    <script src="../js/index.js"></script>
+    <script src="../js/Addmovie.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/watchlater.js"></script>
-    <script src="../js/Addmovie.js"></script>
-    <script src="../js/index.js"></script>
   </body>
 </html>

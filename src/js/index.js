@@ -227,5 +227,25 @@ document.addEventListener("keydown", function (event) {
 
 
 
+window.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
 
+  const links = document.querySelectorAll(".nav-link");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (path.includes(href)) {
+      // Set text color if needed
+      link.classList.add("text-white");
+
+      // Expand underline span
+      const underline = link.querySelector(".underline-span");
+      if (underline) {
+        underline.classList.remove("w-0");
+        underline.classList.add("w-full");
+      }
+    }
+  });
+});
 
