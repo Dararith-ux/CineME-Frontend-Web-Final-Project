@@ -21,7 +21,9 @@
     <header
       class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
     >
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div
+        class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
+      >
         <!-- Logo -->
         <div class="flex items-center space-x-3">
           <div class="relative">
@@ -31,17 +33,17 @@
             ></div>
           </div>
           <h1
-            class="text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+            class="text-3xl md:text-4xl font-black bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
           >
             CineME
           </h1>
         </div>
 
-        <!-- Navigation -->
-        <nav class="hidden md:flex items-center space-x-8">
+        <!-- Navigation (Desktop) -->
+        <nav class="hidden md:flex items-center space-x-8 px-[40px]">
           <a
             href="./homepage.html"
-            class="nav-item relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
+            class="relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
           >
             Home
             <span
@@ -49,8 +51,8 @@
             ></span>
           </a>
           <a
-            href="#"
-            class="nav-item relative text-white font-semibold transition-all duration-300 group border-b-2 border-red-500"
+            href="./dashbaord.html"
+            class="relative text-white font-semibold transition-all duration-300 group "
           >
             Dashboard
             <span
@@ -60,12 +62,12 @@
         </nav>
 
         <!-- Search Bar -->
-        <div class="search-container flex-1 max-w-lg mx-8">
+        <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
           <div class="relative group">
             <input
               type="text"
               placeholder="Search movies, actors, genres..."
-              class="search-input w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
+              class="w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
             />
             <button
               class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110"
@@ -81,7 +83,7 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
+                />
               </svg>
             </button>
             <div
@@ -90,12 +92,12 @@
           </div>
         </div>
 
-        <!-- Right Side Icons -->
+        <!-- Right Side -->
         <div class="flex items-center space-x-4">
           <!-- Theme Toggle -->
           <button
             id="themeToggle"
-            class="theme-toggle p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/10 hover:border-red-400 transition-all duration-300 shadow-lg hover:scale-105"
+            class="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/10 hover:border-red-400 transition-all duration-300 shadow-lg hover:scale-105"
             title="Toggle Day/Night Mode"
           >
             <svg
@@ -110,7 +112,7 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              ></path>
+              />
             </svg>
             <svg
               id="moonIcon"
@@ -124,7 +126,7 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              ></path>
+              />
             </svg>
           </button>
 
@@ -144,41 +146,40 @@
               ></div>
             </div>
           </div>
-        </div>
 
-        <!-- Mobile Menu Button -->
-        <button
-          class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
-          id="mobileMenuBtn"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            id="mobileMenuBtn"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-      <!-- Mobile Navigation (hidden by default) -->
+
+      <!-- Mobile Navigation -->
       <nav
         id="mobileMenu"
-        class="md:hidden fixed top-20 left-0 w-full bg-black/90 text-white backdrop-blur-lg border-t border-white/10 z-10 hidden flex-col space-y-4 py-4 px-6"
+        class="md:hidden mt-4 hidden flex flex-col space-y-4 bg-black/80 backdrop-blur-md rounded-xl p-4 text-white border-t border-white/10"
       >
         <a
           href="./homepage.html"
-          class="block text-white/90 hover:text-white font-medium"
+          class="text-white/90 hover:text-white font-medium"
           >Home</a
-        >
-        <a
-          href="#"
-          class="block text-white/90 hover:text-white font-medium border-b-2 border-red-500"
+        >   
+        <a href="./dashbaord.html" class="text-white font-medium border-b-2 border-red-500"
           >Dashboard</a
         >
       </nav>
@@ -325,7 +326,6 @@
             >
               Add New Movie
             </h2>
-          
           </div>
 
           <form id="addMovieForm" class="space-y-4">
@@ -452,7 +452,7 @@
                 Cancel
               </button>
               <button
-              type="submit"
+                type="submit"
                 id="fetchDetailsBtn"
                 class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
@@ -507,5 +507,6 @@
     <script src="../js/api.js"></script>
     <script src="../js/watchlater.js"></script>
     <script src="../js/Addmovie.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
