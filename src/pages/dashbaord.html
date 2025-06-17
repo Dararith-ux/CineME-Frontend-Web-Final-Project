@@ -19,7 +19,7 @@
   >
     <!-- Header -->
     <header
-      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl "
+      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
     >
       <div
         class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
@@ -43,20 +43,23 @@
         <nav class="hidden md:flex items-center space-x-8 px-[40px]">
           <a
             href="./homepage.html"
-            class="relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
+            id="homeLink"
+            class="nav-link relative text-white/90 hover:text-white font-semibold transition-all duration-300 group"
           >
             Home
             <span
-              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
+              class="underline-span absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
             ></span>
           </a>
+
           <a
             href="./dashbaord.html"
-            class="relative text-white font-semibold transition-all duration-300 group "
+            id="dashboardLink"
+            class="nav-link relative text-white font-semibold transition-all duration-300 group"
           >
             Dashboard
             <span
-              class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 to-pink-500"
+              class="underline-span absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 group-hover:w-full transition-all duration-300"
             ></span>
           </a>
         </nav>
@@ -178,18 +181,20 @@
           href="./homepage.html"
           class="text-white/90 hover:text-white font-medium"
           >Home</a
-        >   
-        <a href="./dashbaord.html" class="text-white font-medium border-b-2 border-red-500"
+        >
+        <a
+          href="./dashbaord.html"
+          class="text-white font-medium border-b-2 border-red-500"
           >Dashboard</a
         >
       </nav>
     </header>
 
     <!-- Main Layout -->
-    <main class="flex min-h-screen">
+    <main class="flex min-h-screen p-4 md:ml-72">
       <!-- Sidebar -->
       <aside
-        class="w-72 fixed top-[88px] left-0 pl-6 pt-6 pb-8 bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl border-r border-white/10"
+        class="sm:w-65 md:w-92 fixed top-[88px] left-0 pl-6 pt-6 pb-8 bg-black/20 backdrop-blur-md text-white min-h-screen shadow-2xl z-20 border-r border-white/10"
       >
         <h2
           class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-white to-white/70 bg-clip-text"
@@ -507,6 +512,6 @@
     <script src="../js/api.js"></script>
     <script src="../js/watchlater.js"></script>
     <script src="../js/Addmovie.js"></script>
-
+    <script src="../js/index.js"></script>
   </body>
 </html>
