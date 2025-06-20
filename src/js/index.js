@@ -1,43 +1,52 @@
 // Theme toggle functionality
-let isDarkMode = localStorage.getItem("darkMode") === "true";
-const body = document.getElementById("body");
-const themeToggle = document.getElementById("themeToggle");
-const sunIcon = document.getElementById("sunIcon");
-const moonIcon = document.getElementById("moonIcon");
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const add_to_watch_letter_btn = document.getElementById("add_to_watch_later");
-
-// Apply saved theme on page load
-applyTheme();
-
-// Set active nav item
 document.addEventListener("DOMContentLoaded", function () {
-  const navItems = document.querySelectorAll(".nav-item");
-  navItems[0].classList.add("active"); // Set Home as active by default
-});
+  // Get initial theme from localStorage or default to day mode
+  let isDarkMode = localStorage.getItem("darkMode") === "true";
+  const body = document.getElementById("body");
+  const themeToggle = document.getElementById("themeToggle");
+  const sunIcon = document.getElementById("sunIcon");
+  const moonIcon = document.getElementById("moonIcon");
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const add_to_watch_letter_btn = document.getElementById("add_to_watch_later");
 
-// Toggle theme on button click
-themeToggle.addEventListener("click", () => {
-  isDarkMode = !isDarkMode;
-  localStorage.setItem("darkMode", isDarkMode);
+  // Apply saved theme on page load
   applyTheme();
-});
 
-function applyTheme() {
-  if (isDarkMode) {
-    // Night Mode (solid dark)
-    document.body.style.background = "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%)";
+  // Set active nav item
+  document.addEventListener("DOMContentLoaded", function () {
+    const navItems = document.querySelectorAll(".nav-item");
+    navItems[0].classList.add("active"); // Set Home as active by default
+  });
 
-    sunIcon.classList.add("hidden");
-    moonIcon.classList.remove("hidden");
-  } else {
-    // Day Mode (original gradient)
-    body.className = "bg-gradient-to-b from-[#190000] to-[#29001b] min-h-screen";
-    moonIcon.classList.add("hidden");
-    sunIcon.classList.remove("hidden");
+  // Toggle theme when button is clicked
+  themeToggle.addEventListener("click", function () {
+    isDarkMode = !isDarkMode;
+    localStorage.setItem("darkMode", isDarkMode);
+    applyTheme();
+  });
+
+  function applyTheme() {
+    if (isDarkMode) {
+      body.classList.remove(
+        "bg-gradient-to-b",
+        "from-[#190000]",
+        "to-[#29001b]"
+      );
+      body.classList.add("bg-[#121212]");
+      body.style.background =
+        "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%)";
+      sunIcon.classList.add("hidden");
+      moonIcon.classList.remove("hidden");
+    } else {
+      body.classList.remove("bg-[#121212]");
+      body.classList.add("bg-gradient-to-b");
+      body.style.background = "linear-gradient(to bottom, #190000, #29001b)";
+      moonIcon.classList.add("hidden");
+      sunIcon.classList.remove("hidden");
+    }
   }
-}
+});
 
 // Mobile menu toggle
 mobileMenuBtn.addEventListener("click", function () {
