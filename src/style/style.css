@@ -1,13 +1,10 @@
-.gradient-bg-day {
-  background: linear-gradient(to bottom, #190000, #29001b);
-}
-.gradient-bg-night {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%);
-}
-/* Optional: Add smooth transition */
-body {
-  transition: background 0.5s ease;
-}
+  .gradient-bg-day {
+    background: linear-gradient(to bottom, #190000, #29001b);
+  }
+  .gradient-bg-night {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%);
+  }
+
 
 .logo-text {
   background: linear-gradient(45deg, #ff4757, #ff6b7a);
