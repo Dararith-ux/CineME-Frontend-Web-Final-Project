@@ -41,13 +41,14 @@ function renderCustomMovie() {
 
   movieList.forEach((movie, index) => {
     const card = document.createElement("div");
+    const formattedCusMV = formatReleaseDate(movie.releaseDate)
     card.className = "flex flex-col w-[270px] h-[460px] mb-[20px] relative";
 
     card.innerHTML = `
       ${isEditMode ? `<button class="delete-btn absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm" data-index="${index}">✖</button>` : ""}
       <img src="${movie.poster}" alt="${movie.title}" class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer"/>
       <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
-        <h1 class="text-yellow-500 text-xl font-mulish-medium">${movie.releaseDate}</h1>
+        <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedCusMV}</h1>
         <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${movie.title}</h1>
       </div>
     `;
@@ -81,6 +82,14 @@ function loadPage(page) {
     });
 }
 
+const pageButton = document.querySelectorAll(".page-button");
+pageButton.forEach(button =>{
+  button.addEventListener("click", ()=>{
+    button.forEach(b => b.classList.remove("border-yellow-500"));
+    this.button.classList.add("border-yellow-500");
+  });
+});
+
 // Render TMDB movies
 function renderMovies() {
   cardcontainer.innerHTML = movies
@@ -101,15 +110,7 @@ function renderMovies() {
     .join("");
 }
 
-// Highlight active page
-function highlightCurrentPage() {
-  document.querySelectorAll(".page-button").forEach((btn) => {
-    btn.classList.remove("border-yellow-500");
-    if (parseInt(btn.innerText) === currentPage) {
-      btn.classList.add("border-yellow-500");
-    }
-  });
-}
+
 
 // Watch Later cookie management
 let watch_later = [];
@@ -261,4 +262,5 @@ window.onload = function () {
   renderCustomMovie();
   loadPage(currentPage);
   setActiveTab("nowShowing"); // 🔥 default active tab
+  highlightCurrentPage();
 };

@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     const title = document.getElementById("movieTitle").value.trim();
-    const year = document.getElementById("movieYear").value.trim();
+    const release_Date = document.getElementById("movieDate").value;
     const genre = document.getElementById("movieGenre").value;
     const rating = document.getElementById("movieRating").value.trim();
     const poster = document.getElementById("moviePoster").value.trim();
     const description = document.getElementById("movieDescription").value.trim();
 
-    if (!title || !year) {
+    if (!title || !release_Date) {
       alert("Please enter both title and year.");
       return;
     }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const movie = {
   id: Date.now(),
   title: title,
-  releaseDate: `01 January ${year}`,
+  releaseDate: release_Date,
   poster: poster || "https://via.placeholder.com/270x380?text=No+Image",
   description: description
 };
@@ -63,8 +63,3 @@ localStorage.setItem("customMovies", JSON.stringify(movies));
     document.getElementById("addMovieForm").reset();
   });
 });
-
-
-
-
-
