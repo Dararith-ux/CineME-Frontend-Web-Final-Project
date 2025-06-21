@@ -9,6 +9,216 @@ let movies = [];
 let currentPage = 1;
 let isEditMode = false;
 
+// ========== ENHANCED ANIMATION SYSTEM ==========
+
+// Scroll tracking variables
+let lastScrollTop = 0;
+let scrollDirection = "down";
+let isScrolling = false;
+let scrollTimer = null;
+let animationQueue = [];
+
+// Track scroll direction and speed
+function trackScrollDirection() {
+  const currentScrollTop =
+    window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScrollTop > lastScrollTop) {
+    scrollDirection = "down";
+  } else {
+    scrollDirection = "up";
+  }
+
+  lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+  isScrolling = true;
+
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    isScrolling = false;
+  }, 200);
+}
+
+// Enhanced Intersection Observer with intelligent timing
+const observerOptions = {
+  root: null,
+  rootMargin: "0px 0px -80px 0px",
+  threshold: 0.15,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      const element = entry.target;
+
+      // Skip if already animated
+      if (element.classList.contains("animate-in")) return;
+
+      // Calculate delay based on scroll context
+      let baseDelay = 0;
+
+      if (scrollDirection === "up") {
+        baseDelay = 300; // Longer delay when scrolling up
+      } else {
+        baseDelay = isScrolling ? 150 : 100;
+      }
+
+      // Add stagger based on element position
+      const elementIndex = Array.from(element.parentNode.children).indexOf(
+        element
+      );
+      const staggerDelay = elementIndex * 80;
+
+      const totalDelay = baseDelay + staggerDelay;
+
+      // Queue animation to prevent overwhelming
+      animationQueue.push({
+        element: element,
+        delay: totalDelay,
+      });
+
+      processAnimationQueue();
+    } else {
+      // Gentle exit animation when scrolling away fast
+      if (scrollDirection === "down" && isScrolling) {
+        entry.target.classList.remove("animate-in");
+        entry.target.classList.add("animate-out");
+      }
+    }
+  });
+}, observerOptions);
+
+// Process animation queue with intelligent batching
+function processAnimationQueue() {
+  if (animationQueue.length === 0) return;
+
+  // Process up to 3 animations at once to prevent lag
+  const batch = animationQueue.splice(0, 3);
+
+  batch.forEach(({ element, delay }) => {
+    setTimeout(() => {
+      if (element && element.parentNode) {
+        element.classList.add("animate-in");
+        element.classList.remove("animate-out");
+      }
+    }, delay);
+  });
+
+  // Process remaining queue after a brief pause
+  if (animationQueue.length > 0) {
+    setTimeout(() => processAnimationQueue(), 200);
+  }
+}
+
+// Comprehensive animation styles
+function addAnimationStyles() {
+  if (document.getElementById("scroll-animations")) return;
+
+  const style = document.createElement("style");
+  style.id = "scroll-animations";
+  style.textContent = `
+    .movie-card {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.3, 1.1);
+      will-change: transform, opacity;
+    }
+    
+    .movie-card.animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .movie-card.animate-out {
+      opacity: 0;
+      transform: translateY(20px) scale(0.97);
+      transition: all 0.5s ease;
+    }
+    
+    /* Remove the fixed delays - we'll handle this dynamically */
+    .movie-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+    
+    /* ... rest of your styles ... */
+  `;
+  document.head.appendChild(style);
+}
+// Initialize animation system
+function initializeAnimations() {
+  addAnimationStyles();
+
+  // Add scroll tracking with passive listeners for performance
+  window.addEventListener("scroll", trackScrollDirection, { passive: true });
+
+  // Throttled parallax effects
+  let parallaxTicking = false;
+
+  function updateParallaxEffects() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll(".parallax-bg");
+
+    parallaxElements.forEach((el) => {
+      const speed = parseFloat(el.dataset.speed) || 0.3;
+      el.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+
+    parallaxTicking = false;
+  }
+
+  function requestParallaxTick() {
+    if (!parallaxTicking) {
+      requestAnimationFrame(updateParallaxEffects);
+      parallaxTicking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestParallaxTick, { passive: true });
+}
+
+// Enhanced loading animation
+function showLoadingAnimation() {
+  cardcontainer.innerHTML = "";
+  cardcontainer.classList.add("page-transition");
+
+  for (let i = 0; i < 8; i++) {
+    const skeleton = document.createElement("div");
+    skeleton.className =
+      "flex flex-col w-[270px] h-[460px] mb-[20px] loading-shimmer rounded-xl";
+    skeleton.style.animationDelay = `${i * 0.1}s`;
+    skeleton.innerHTML = `
+      <div class="w-full h-[380px] loading-shimmer rounded-xl"></div>
+      <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
+        <div class="w-32 h-4 loading-shimmer rounded mb-2"></div>
+        <div class="w-48 h-4 loading-shimmer rounded"></div>
+      </div>
+    `;
+    cardcontainer.appendChild(skeleton);
+  }
+
+  setTimeout(() => {
+    cardcontainer.classList.add("active");
+  }, 50);
+}
+
+// Observe elements with cleanup
+function observeElements() {
+  // Clean up previous observations
+  const existingCards = document.querySelectorAll(".movie-card");
+  existingCards.forEach((card) => {
+    observer.unobserve(card);
+  });
+
+  // Observe new cards with a small delay to allow DOM to settle
+  setTimeout(() => {
+    const newCards = document.querySelectorAll(".movie-card");
+    newCards.forEach((card) => {
+      observer.observe(card);
+    });
+  }, 100);
+}
+// ========== UTILITY FUNCTIONS ==========
 
 // Format release date
 function formatReleaseDate(dateString) {
@@ -19,6 +229,7 @@ function formatReleaseDate(dateString) {
   return `${day} ${month} ${year}`;
 }
 
+// Custom movie management
 function deleteCustomMovie(index) {
   const movieData = localStorage.getItem("customMovies");
   if (!movieData) return;
@@ -27,93 +238,153 @@ function deleteCustomMovie(index) {
   movieList.splice(index, 1);
 
   localStorage.setItem("customMovies", JSON.stringify(movieList));
-  renderCustomMovie(); // 👈 this will re-show with delete buttons if isEditMode is true
+  renderCustomMovie();
 }
 
-
-// Render custom movies from localStorage
+// Enhanced custom movie rendering
 function renderCustomMovie() {
   cardcontainer.innerHTML = "";
+  cardcontainer.classList.remove("active");
+  cardcontainer.classList.add("page-transition");
+
   const movieData = localStorage.getItem("customMovies");
-  if (!movieData) return;
+
+  if (!movieData) {
+    cardcontainer.innerHTML = `
+      <div class="col-span-full text-center text-gray-400 text-xl fade-in">
+        <p>No custom movies added yet.</p>
+        <p class="text-sm mt-2">Add your favorite movies to see them here!</p>
+      </div>
+    `;
+
+    setTimeout(() => {
+      cardcontainer.classList.add("active");
+      document.querySelector(".fade-in").classList.add("visible");
+    }, 200);
+    return;
+  }
 
   const movieList = JSON.parse(movieData);
 
   movieList.forEach((movie, index) => {
     const card = document.createElement("div");
-    const formattedCusMV = formatReleaseDate(movie.releaseDate)
-    card.className = "flex flex-col w-[270px] h-[460px] mb-[20px] relative";
+    const formattedDate = formatReleaseDate(movie.releaseDate);
+    card.className =
+      "movie-card flex flex-col w-[270px] h-[460px] mb-[20px] relative";
 
     card.innerHTML = `
-      ${isEditMode ? `<button class="delete-btn absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm" data-index="${index}">✖</button>` : ""}
-      <img src="${movie.poster}" alt="${movie.title}" class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer"/>
+      ${
+        isEditMode
+          ? `<button class="delete-btn absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm hover:bg-red-600 transition-colors z-10" data-index="${index}">✖</button>`
+          : ""
+      }
+      <img src="${movie.poster}" alt="${
+      movie.title
+    }" class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer"/>
       <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
-        <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedCusMV}</h1>
-        <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${movie.title}</h1>
+        <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedDate}</h1>
+        <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${
+          movie.title
+        }</h1>
       </div>
     `;
     cardcontainer.appendChild(card);
   });
 
-  // ✅ Bind delete buttons (important)
+  // Trigger animations
+  setTimeout(() => {
+    cardcontainer.classList.add("active");
+    observeElements();
+
+    // Staggered entrance animations
+    const cards = document.querySelectorAll(".movie-card");
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("animate-in");
+      }, index * 120);
+    });
+  }, 150);
+
+  // Bind delete functionality
   if (isEditMode) {
     document.querySelectorAll(".delete-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
         const index = parseInt(btn.getAttribute("data-index"));
-        deleteCustomMovie(index);
+        const card = btn.closest(".movie-card");
+
+        // Smooth exit animation
+        card.style.transform = "scale(0.8) translateY(-30px)";
+        card.style.opacity = "0";
+        card.style.transition = "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+
+        setTimeout(() => {
+          deleteCustomMovie(index);
+        }, 400);
       });
     });
   }
 }
 
+// Enhanced page loading
+const loadedPages = new Map(); // cache
 
-// Load movies from TMDB
-function loadPage(page) {
-  if (page < 1) return;
-  currentPage = page;
+function loadPage(page, append = false) {
+  currentPage = page; // Update current page
+  highlightCurrentPage();
+
   fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${page}`
   )
     .then((res) => res.json())
     .then((data) => {
-      movies = data.results;
-      renderMovies();
-      highlightCurrentPage();
+      if (!data || !data.results || !Array.isArray(data.results)) return;
+
+      const newMovies = data.results;
+      movies = append ? [...movies, ...newMovies] : newMovies;
+
+      setTimeout(() => {
+        append ? appendMovies(newMovies) : renderMovies();
+        highlightCurrentPage();
+      }, 300); // shorter delay = faster
+    })
+    .catch((error) => {
+      console.error("Error loading movies:", error);
     });
 }
-
-const pageButton = document.querySelectorAll(".page-button");
-pageButton.forEach(button =>{
-  button.addEventListener("click", ()=>{
-    button.forEach(b => b.classList.remove("border-yellow-500"));
-    this.button.classList.add("border-yellow-500");
-  });
-});
-
-// Render TMDB movies
+// Enhanced movie rendering
 function renderMovies() {
-  cardcontainer.innerHTML = movies
-    .map((movie, index) => {
-      const formattedDate = formatReleaseDate(movie.release_date);
-      return `
-        <div class="flex flex-col w-[270px] h-[460px] mb-[20px]">
-          <img onclick="openModal(${index})"
-            src="${imgsrc}${movie.poster_path}"
-            alt="${movie.title}"
-            class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer" />
-          <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
-            <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedDate}</h1>
-            <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${movie.title}</h1>
-          </div>
-        </div>`;
-    })
-    .join("");
+  cardcontainer.innerHTML = "";
+
+  movies.forEach((movie, index) => {
+    const formattedDate = formatReleaseDate(movie.release_date);
+    const card = document.createElement("div");
+    card.className = "movie-card flex flex-col w-[270px] h-[460px] mb-[20px]";
+
+    card.innerHTML = `
+      <img onclick="openModal(${index})"
+        src="${imgsrc}${movie.poster_path}"
+        alt="${movie.title}"
+        class="w-full h-[380px] object-cover rounded-xl shadow-xl cursor-pointer"
+        loading="lazy" />
+      <div class="flex flex-col justify-start items-start h-[80px] px-2 mt-2">
+        <h1 class="text-yellow-500 text-xl font-mulish-medium">${formattedDate}</h1>
+        <h1 class="text-white text-xl pt-1 font-mulish-medium break-words leading-snug">${movie.title}</h1>
+      </div>
+    `;
+
+    cardcontainer.appendChild(card);
+
+    // Observe each card individually after a small delay
+    setTimeout(() => {
+      observer.observe(card);
+    }, 50);
+  });
 }
+// ========== WATCH LATER FUNCTIONALITY ==========
 
-
-
-// Watch Later cookie management
 let watch_later = [];
+
 function getCookieArray(name) {
   const cookies = document.cookie.split("; ");
   const found = cookies.find((row) => row.startsWith(name + "="));
@@ -135,13 +406,21 @@ function add_to_watchlater(movieID) {
   document.cookie = `watch_later=${JSON.stringify(watch_later)}; path=/;`;
 }
 
-// Modal handling
+// ========== MODAL FUNCTIONALITY ==========
+
 function openModal(index) {
   const movie = movies[index];
   const formattedDate = formatReleaseDate(movie.release_date);
+  const modal = document.getElementById("modal");
 
-  document.getElementById("modal").classList.remove("hidden");
+  modal.classList.remove("hidden");
+  modal.classList.add("modal-enter");
   document.body.style.overflow = "hidden";
+
+  // Smooth entrance animation
+  setTimeout(() => {
+    modal.classList.add("modal-enter-active");
+  }, 15);
 
   document.getElementById("modal-movieTitle").innerText = movie.title;
   document.getElementById(
@@ -159,6 +438,7 @@ function openModal(index) {
     add_to_watchlater(movie.id);
   };
 
+  // Load trailer
   const iframe = document.querySelector("#modal iframe");
   const trailerContainer = iframe.parentElement;
   iframe.src = "";
@@ -189,14 +469,25 @@ function openModal(index) {
 }
 
 function closeModal() {
-  document.getElementById("modal").classList.add("hidden");
-  document.body.style.overflow = "auto";
-  const iframe = document.querySelector("#modal iframe");
-  iframe.src = "";
-  iframe.classList.remove("hidden");
-  const fallback = iframe.parentElement.querySelector(".no-trailer");
-  if (fallback) fallback.remove();
+  const modal = document.getElementById("modal");
+
+  modal.classList.remove("modal-enter-active");
+  modal.classList.add("modal-exit", "modal-exit-active");
+
+  setTimeout(() => {
+    modal.classList.add("hidden");
+    modal.classList.remove("modal-enter", "modal-exit", "modal-exit-active");
+    document.body.style.overflow = "auto";
+
+    const iframe = document.querySelector("#modal iframe");
+    iframe.src = "";
+    iframe.classList.remove("hidden");
+    const fallback = iframe.parentElement.querySelector(".no-trailer");
+    if (fallback) fallback.remove();
+  }, 400);
 }
+
+// ========== TAB AND NAVIGATION FUNCTIONALITY ==========
 
 function setActiveTab(activeId) {
   const tabs = [nowShowing, addedMovie];
@@ -219,48 +510,99 @@ function setActiveTab(activeId) {
   });
 }
 
-// Bind pagination buttons
+function highlightCurrentPage() {
+  const buttons = document.querySelectorAll(".page-button");
+  buttons.forEach(btn => {
+    // Reset all buttons
+    btn.classList.remove("border-yellow-500", "bg-yellow-500", "text-black");
+    btn.classList.add("border-transparent", "bg-[#2e2f3b]", "text-white");
+
+    // Apply active styles only to the current page
+    if (parseInt(btn.dataset.page) === currentPage) {
+      btn.classList.remove("bg-[#2e2f3b]", "text-white");
+      btn.classList.add("border-yellow-500", "bg-yellow-500", "text-black");
+    }
+  });
+}
+
+
+// ========== EVENT LISTENERS ==========
+
+// Enhanced pagination
 document.querySelectorAll(".page-button").forEach((btn) => {
   btn.addEventListener("click", () => {
     const page = parseInt(btn.innerText);
+
+    // Add click animation
+    btn.classList.add("pulse-animation");
+    setTimeout(() => {
+      btn.classList.remove("pulse-animation");
+    }, 1500);
+
     loadPage(page);
   });
 });
 
-// Toggle between TMDB and Custom Movies
+// Tab switching with smooth transitions
 nowShowing.addEventListener("click", () => {
-  cardcontainer.innerHTML = "";
   document.getElementById("pageBtn").classList.remove("hidden");
   document.getElementById("editBtn").classList.add("hidden");
-  loadPage(currentPage);
-  setActiveTab("nowShowing");
+
+  showLoadingAnimation();
+
+  setTimeout(() => {
+    loadPage(currentPage);
+    setActiveTab("nowShowing");
+  }, 400);
 });
+
 addedMovie.addEventListener("click", () => {
   document.getElementById("pageBtn").classList.add("hidden");
   document.getElementById("editBtn").classList.remove("hidden");
-  renderCustomMovie();
-  setActiveTab("addedMovie");
+
+  showLoadingAnimation();
+
+  setTimeout(() => {
+    renderCustomMovie();
+    setActiveTab("addedMovie");
+  }, 1200);
 });
 
+// Edit mode functionality
 document.getElementById("editBtn").addEventListener("click", () => {
   isEditMode = true;
   document.getElementById("confirmEdit").classList.remove("hidden");
-  renderCustomMovie(); // 🔁 Re-render to show delete buttons
+  renderCustomMovie();
 });
 
 document.querySelectorAll(".canSave").forEach((btn) => {
   btn.addEventListener("click", () => {
     isEditMode = false;
     document.getElementById("confirmEdit").classList.add("hidden");
-    renderCustomMovie(); // 🔁 Re-render to hide delete buttons
+    renderCustomMovie();
   });
 });
 
-// Initial load
+// ========== INITIALIZATION ==========
+
 window.onload = function () {
+  initializeAnimations();
   watch_later = getCookieArray("watch_later");
-  renderCustomMovie();
-  loadPage(currentPage);
-  setActiveTab("nowShowing"); // 🔥 default active tab
-  highlightCurrentPage();
+
+  // Load watch later data
+  watch_later = getCookieArray("watch_later");
+
+  // Show initial loading
+  showLoadingAnimation();
+
+  // Load content after animations are ready
+  setTimeout(() => {
+    renderCustomMovie();
+    loadPage(currentPage);
+    setActiveTab("nowShowing");
+    highlightCurrentPage();
+
+    // Force a small delay before observing elements
+    setTimeout(observeElements, 300);
+  }, 500);
 };

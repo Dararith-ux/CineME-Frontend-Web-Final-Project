@@ -152,3 +152,34 @@
       0 0 40px #00ffff, 0 0 50px #00ffff;
   }
 }
+ /* Custom styles for active states */
+ .page-button.active {
+  background-color: #facc15; /* yellow-400 */
+  color: #000;
+  border: 2px solid #facc15;
+}
+
+.page-button.active:hover {
+  background-color: #eab308; /* yellow-500 */
+  border-color: #eab308;
+}
+
+.tab-button.active {
+  color: #facc15;
+  border-bottom-color: #facc15;
+}
+
+  
+  
+  .loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #f59e0b;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }

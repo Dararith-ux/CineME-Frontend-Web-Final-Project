@@ -265,3 +265,53 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// Page navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const pageButtons = document.querySelectorAll('.page-button');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const editBtn = document.getElementById('editBtn');
+  const currentPageSpan = document.getElementById('currentPage');
+  
+  // Handle page button clicks
+  pageButtons.forEach(button => {
+      button.addEventListener('click', function() {
+          // Remove active class from all page buttons
+          pageButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Update current page display
+          const pageNumber = this.getAttribute('data-page');
+          currentPageSpan.textContent = `Page ${pageNumber}`;
+          
+          // Here you can add logic to load content for the selected page
+          console.log(`Loading content for page ${pageNumber}`);
+      });
+  });
+  
+  // Handle tab button clicks
+  tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+          // Remove active class from all tab buttons
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Show/hide edit button based on active tab
+          if (this.id === 'addedMovie') {
+              editBtn.classList.remove('hidden');
+          } else {
+              editBtn.classList.add('hidden');
+          }
+          
+          // Reset page selection when switching tabs
+          pageButtons.forEach(btn => btn.classList.remove('active'));
+          pageButtons[0].classList.add('active');
+          currentPageSpan.textContent = 'Page 1';
+          
+          console.log(`Switched to: ${this.textContent.trim()}`);
+      });
+  });
+});
