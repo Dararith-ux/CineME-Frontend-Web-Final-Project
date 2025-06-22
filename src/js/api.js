@@ -38,7 +38,7 @@ function trackScrollDirection() {
   }, 200);
 }
 
-// Enhanced Intersection Observer with intelligent timing
+// Enhanced Intersection Observer with your original style + stability fix
 const observerOptions = {
   root: null,
   rootMargin: "0px 0px -80px 0px",
@@ -53,16 +53,16 @@ const observer = new IntersectionObserver((entries) => {
       // Skip if already animated
       if (element.classList.contains("animate-in")) return;
 
-      // Calculate delay based on scroll context
+      // Calculate delay based on scroll context (your original logic)
       let baseDelay = 0;
 
       if (scrollDirection === "up") {
-        baseDelay = 300; // Longer delay when scrolling up
+        baseDelay = 300; // Your original longer delay when scrolling up
       } else {
         baseDelay = isScrolling ? 150 : 100;
       }
 
-      // Add stagger based on element position
+      // Add stagger based on element position (your original stagger)
       const elementIndex = Array.from(element.parentNode.children).indexOf(
         element
       );
@@ -70,7 +70,7 @@ const observer = new IntersectionObserver((entries) => {
 
       const totalDelay = baseDelay + staggerDelay;
 
-      // Queue animation to prevent overwhelming
+      // Queue animation to prevent overwhelming (your original system)
       animationQueue.push({
         element: element,
         delay: totalDelay,
@@ -78,10 +78,19 @@ const observer = new IntersectionObserver((entries) => {
 
       processAnimationQueue();
     } else {
-      // Gentle exit animation when scrolling away fast
-      if (scrollDirection === "down" && isScrolling) {
+      // FIXED: Only apply gentle exit animation when scrolling away fast AND completely out of view
+      const rect = element.getBoundingClientRect();
+      const isCompletelyOutOfView = rect.bottom < -200 || rect.top > window.innerHeight + 200;
+      
+      // Only hide if completely out of view AND scrolling fast (much more conservative)
+      if (isCompletelyOutOfView && scrollDirection === "down" && isScrolling) {
         entry.target.classList.remove("animate-in");
         entry.target.classList.add("animate-out");
+        
+        // Remove animate-out class after animation to prevent permanent hiding
+        setTimeout(() => {
+          entry.target.classList.remove("animate-out");
+        }, 500);
       }
     }
   });
@@ -91,8 +100,8 @@ const observer = new IntersectionObserver((entries) => {
 function processAnimationQueue() {
   if (animationQueue.length === 0) return;
 
-  // Process up to 3 animations at once to prevent lag
-  const batch = animationQueue.splice(0, 3);
+  // Process up to 4 animations at once for better performance
+  const batch = animationQueue.splice(0, 4);
 
   batch.forEach(({ element, delay }) => {
     setTimeout(() => {
@@ -105,7 +114,7 @@ function processAnimationQueue() {
 
   // Process remaining queue after a brief pause
   if (animationQueue.length > 0) {
-    setTimeout(() => processAnimationQueue(), 200);
+    setTimeout(() => processAnimationQueue(), 150);
   }
 }
 
@@ -119,7 +128,7 @@ function addAnimationStyles() {
     .movie-card {
       opacity: 0;
       transform: translateY(30px) scale(0.95);
-      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.3, 1.1);
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
       will-change: transform, opacity;
     }
     
@@ -129,22 +138,87 @@ function addAnimationStyles() {
     }
     
     .movie-card.animate-out {
-      opacity: 0;
-      transform: translateY(20px) scale(0.97);
-      transition: all 0.5s ease;
+      opacity: 0.3;
+      transform: translateY(10px) scale(0.98);
+      transition: all 0.4s ease;
     }
     
-    /* Remove the fixed delays - we'll handle this dynamically */
     .movie-card:hover {
       transform: translateY(-8px) scale(1.03);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
       transition: all 0.4s ease;
     }
     
-    /* ... rest of your styles ... */
+    /* Loading animations */
+    .loading-shimmer {
+      background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .page-transition {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .pulse-animation {
+      animation: pulse 0.3s ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Modal animations */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    
+    .modal-enter-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.3s ease;
+    }
+    
+    .modal-exit {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .modal-exit-active {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
   `;
   document.head.appendChild(style);
 }
+
 // Initialize animation system
 function initializeAnimations() {
   addAnimationStyles();
@@ -218,6 +292,7 @@ function observeElements() {
     });
   }, 100);
 }
+
 // ========== UTILITY FUNCTIONS ==========
 
 // Format release date
@@ -301,7 +376,7 @@ function renderCustomMovie() {
     cards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add("animate-in");
-      }, index * 120);
+      }, index * 80); // Faster stagger
     });
   }, 150);
 
@@ -330,7 +405,7 @@ function renderCustomMovie() {
 const loadedPages = new Map(); // cache
 
 function loadPage(page, append = false) {
-  currentPage = page; // Update current page
+  currentPage = page;
   highlightCurrentPage();
 
   fetch(
@@ -346,15 +421,18 @@ function loadPage(page, append = false) {
       setTimeout(() => {
         append ? appendMovies(newMovies) : renderMovies();
         highlightCurrentPage();
-      }, 300); // shorter delay = faster
+      }, 300);
     })
     .catch((error) => {
       console.error("Error loading movies:", error);
     });
 }
+
 // Enhanced movie rendering
 function renderMovies() {
   cardcontainer.innerHTML = "";
+  cardcontainer.classList.remove("active");
+  cardcontainer.classList.add("page-transition");
 
   movies.forEach((movie, index) => {
     const formattedDate = formatReleaseDate(movie.release_date);
@@ -374,13 +452,15 @@ function renderMovies() {
     `;
 
     cardcontainer.appendChild(card);
-
-    // Observe each card individually after a small delay
-    setTimeout(() => {
-      observer.observe(card);
-    }, 50);
   });
+
+  // Trigger animations after DOM is ready
+  setTimeout(() => {
+    cardcontainer.classList.add("active");
+    observeElements();
+  }, 100);
 }
+
 // ========== WATCH LATER FUNCTIONALITY ==========
 
 let watch_later = [];
@@ -490,41 +570,29 @@ function closeModal() {
 // ========== TAB AND NAVIGATION FUNCTIONALITY ==========
 
 function setActiveTab(activeId) {
-  const tabs = [nowShowing, addedMovie];
+  const tabs = document.querySelectorAll(".tab-button.nav-item");
+
   tabs.forEach((tab) => {
     if (tab.id === activeId) {
-      tab.classList.add(
-        "border-yellow-400",
-        "text-yellow-400",
-        "font-semibold"
-      );
-      tab.classList.remove("border-transparent", "text-white");
+      tab.classList.add("active");
     } else {
-      tab.classList.remove(
-        "border-yellow-400",
-        "text-yellow-400",
-        "font-semibold"
-      );
-      tab.classList.add("border-transparent", "text-white");
+      tab.classList.remove("active");
     }
   });
 }
 
 function highlightCurrentPage() {
   const buttons = document.querySelectorAll(".page-button");
-  buttons.forEach(btn => {
-    // Reset all buttons
+  buttons.forEach((btn) => {
     btn.classList.remove("border-yellow-500", "bg-yellow-500", "text-black");
     btn.classList.add("border-transparent", "bg-[#2e2f3b]", "text-white");
 
-    // Apply active styles only to the current page
     if (parseInt(btn.dataset.page) === currentPage) {
       btn.classList.remove("bg-[#2e2f3b]", "text-white");
       btn.classList.add("border-yellow-500", "bg-yellow-500", "text-black");
     }
   });
 }
-
 
 // ========== EVENT LISTENERS ==========
 
@@ -533,7 +601,6 @@ document.querySelectorAll(".page-button").forEach((btn) => {
   btn.addEventListener("click", () => {
     const page = parseInt(btn.innerText);
 
-    // Add click animation
     btn.classList.add("pulse-animation");
     setTimeout(() => {
       btn.classList.remove("pulse-animation");
@@ -544,43 +611,83 @@ document.querySelectorAll(".page-button").forEach((btn) => {
 });
 
 // Tab switching with smooth transitions
-nowShowing.addEventListener("click", () => {
-  document.getElementById("pageBtn").classList.remove("hidden");
-  document.getElementById("editBtn").classList.add("hidden");
-
-  showLoadingAnimation();
-
-  setTimeout(() => {
-    loadPage(currentPage);
-    setActiveTab("nowShowing");
-  }, 400);
-});
-
 addedMovie.addEventListener("click", () => {
-  document.getElementById("pageBtn").classList.add("hidden");
-  document.getElementById("editBtn").classList.remove("hidden");
+  setActiveTab("addedMovie");
 
+  // Hide page buttons
+  document.getElementById("pageBtn")?.classList.add("hidden");
+
+  // Hide all individual page buttons
+  document.querySelectorAll(".page-button").forEach(btn => {
+    btn.style.display = "none";
+  });
+
+  // Hide "Currently viewing" text
+  const currentViewText = Array.from(document.querySelectorAll("p")).find(p =>
+    p.textContent.trim().startsWith("Currently viewing:")
+  );
+  if (currentViewText?.parentNode) {
+    currentViewText.parentNode.style.display = "none";
+  }
+
+  // Show edit button
+  document.getElementById("editBtn")?.classList.remove("hidden");
+
+  // Clear and load added movies
+  cardcontainer.innerHTML = "";
+  cardcontainer.classList.remove("active");
   showLoadingAnimation();
 
   setTimeout(() => {
     renderCustomMovie();
-    setActiveTab("addedMovie");
-  }, 1200);
+  }, 600);
 });
 
 // Edit mode functionality
-document.getElementById("editBtn").addEventListener("click", () => {
+document.getElementById("editBtn")?.addEventListener("click", () => {
   isEditMode = true;
-  document.getElementById("confirmEdit").classList.remove("hidden");
+  document.getElementById("confirmEdit")?.classList.remove("hidden");
   renderCustomMovie();
 });
 
 document.querySelectorAll(".canSave").forEach((btn) => {
   btn.addEventListener("click", () => {
     isEditMode = false;
-    document.getElementById("confirmEdit").classList.add("hidden");
+    document.getElementById("confirmEdit")?.classList.add("hidden");
     renderCustomMovie();
   });
+});
+
+// Now Showing tab
+nowShowing.addEventListener("click", () => {
+  setActiveTab("nowShowing");
+
+  // Show page buttons and current page text
+  document.getElementById("pageBtn")?.classList.remove("hidden");
+  document.querySelectorAll(".page-button").forEach(btn => {
+    btn.style.display = "block";
+  });
+
+  const currentViewText = Array.from(document.querySelectorAll("p")).find(p =>
+    p.textContent.trim().startsWith("Currently viewing:")
+  );
+  if (currentViewText?.parentNode) {
+    currentViewText.parentNode.style.display = "block";
+  }
+
+  // Hide edit button
+  document.getElementById("editBtn")?.classList.add("hidden");
+
+  // Reset content
+  cardcontainer.innerHTML = "";
+  cardcontainer.classList.remove("active");
+  movies = [];
+
+  showLoadingAnimation();
+
+  setTimeout(() => {
+    loadPage(1);
+  }, 400);
 });
 
 // ========== INITIALIZATION ==========
@@ -589,15 +696,11 @@ window.onload = function () {
   initializeAnimations();
   watch_later = getCookieArray("watch_later");
 
-  // Load watch later data
-  watch_later = getCookieArray("watch_later");
-
   // Show initial loading
   showLoadingAnimation();
 
   // Load content after animations are ready
   setTimeout(() => {
-    renderCustomMovie();
     loadPage(currentPage);
     setActiveTab("nowShowing");
     highlightCurrentPage();
