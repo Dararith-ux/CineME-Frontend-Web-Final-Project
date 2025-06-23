@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="./src/style/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script
@@ -14,7 +14,7 @@
   </head>
   <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
     <header
-      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl "
+      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
     >
       <div
         class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
@@ -48,7 +48,7 @@
           </a>
 
           <a
-            href="./dashbaord.html"
+            href="./src/pages/dashboard.html"
             id="dashboardLink"
             class="nav-link relative text-white font-semibold transition-all duration-300 group"
           >
@@ -178,16 +178,14 @@
           >Home</a
         >
         <a
-          href="./dashbaord.html"
+          href="./src/pages/dashboard.html"
           class="text-white font-medium border-b-2 border-red-500"
           >Dashboard</a
         >
       </nav>
     </header>
 
-
     <main class="w-full py-4 px-6 pt-[100px]">
-
       <div class="flex items-center flex-col">
         <h1
           class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center pt-20"
@@ -229,7 +227,7 @@
                     rgba(0, 0, 0, 0.6),
                     rgba(75, 0, 130, 0.4)
                   ),
-                  url('../img/image.png');
+                  url('./src/img/image.png');
               "
             >
               <div class="gradient-overlay absolute inset-0"></div>
@@ -322,61 +320,83 @@
             </div>
           </div>
 
-          <!-- Now Showing Section -->
-          <div class="mt-16">
-            <div class="flex items-center justify-between gap-20 mb-8">
-              <button
-                id="nowShowing"
-                class="tab-button text-2xl px-4 py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
-              >
-                Now Showing
-              </button>
-              <button
-                id="addedMovie"
-                class="tab-button px-4 text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
-              >
-                Added Movie
-              </button>
-            </div>
-            <div id="editBtn" class="flex justify-end hidden">
-              <button
-                class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600"
-              >
-                <i class="fa-solid fa-pen-to-square" style="color: #ffffff"></i>
-                <p>Edit your added list</p>
-              </button>
-            </div>
+          <div class="container mx-auto px-4 py-8">
+            
 
-            <!-- Movie Slots Section -->
-            <div
-              id="pageBtn"
-              class="flex flex-wrap justify-center space-x-4 mb-8"
-            >
-              <div
-                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
-              >
-                1
+            <!-- Now Showing Section -->
+            <div class="mt-16">
+              <div class="flex items-center justify-between gap-20 mb-8">
+                <button
+                  id="nowShowing"
+                  class="tab-button active text-2xl px-4 py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+                >
+                  Now Showing
+                </button>
+                <button
+                  id="addedMovie"
+                  class="tab-button px-4 text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+                >
+                  Added Movie
+                </button>
               </div>
-              <div
-                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
-              >
-                2
+
+              <div id="editBtn" class="flex justify-end hidden">
+                <button
+                  class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600"
+                >
+                  <i
+                    class="fa-solid fa-pen-to-square"
+                    style="color: #ffffff"
+                  ></i>
+                  <p>Edit your added list</p>
+                </button>
               </div>
-              <div
-                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
-              >
-                3
+
+              <!-- Page Navigation -->
+              <div class="flex flex-wrap justify-center space-x-4 mb-8">
+                <div
+                  class="page-button active bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  data-page="1"
+                >
+                  1
+                </div>
+                <div
+                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  data-page="2"
+                >
+                  2
+                </div>
+                <div
+                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  data-page="3"
+                >
+                  3
+                </div>
+                <div
+                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  data-page="4"
+                >
+                  4
+                </div>
+                <div
+                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  data-page="5"
+                >
+                  5
+                </div>
               </div>
-              <div
-                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
-              >
-                4
+
+              <!-- Current Page Indicator -->
+              <div class="text-center text-white text-xl mb-8">
+                <p>
+                  Currently viewing:
+                  <span id="currentPage" class="text-yellow-400 font-bold"
+                    >Page 1</span
+                  >
+                </p>
               </div>
-              <div
-                class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-colors cursor-pointer mb-4 w-28 text-center"
-              >
-                5
-              </div>
+
+              <!-- Movie Content for Each Page -->
             </div>
           </div>
         </section>
@@ -712,7 +732,7 @@
                 class="bg-white rounded-xl p-4 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 w-full sm:w-auto"
               >
                 <!-- ABA PAY Logo -->
-                <img src="../img/ABA.png" alt="" class="w-60 h-70" />
+                <img src="./src/img/ABA.png" alt="" class="w-60 h-70" />
 
                 <!-- KHQC Badge -->
                 <div
@@ -756,11 +776,11 @@
         </div>
       </div>
     </footer>
-
-    <script src="../js/navbar.js"></script>
-    <script src="../js/watchlater.js"></script>
-    <script src="../js/api.js"></script>
-    <script src="../js/testing.js"></script>
-    <script src="../js/Addmovie.js"></script>
+    <script src="./src/js/new.js"></script>
+    <script src="./src/js/navbar.js"></script>
+    <script src="./src/js/watchlater.js"></script>
+    <script src="./src/js/api.js"></script>
+    <script src="./src/js/testing.js"></script>
+    <script src="./src/js/Addmovie.js"></script>
   </body>
 </html>
