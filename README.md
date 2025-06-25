@@ -4,7 +4,7 @@
 
 ## 🌐 Live Demo
 
-👉 [Try CineME now](https://final-project-ihl8.vercel.app/)
+👉 [Try CineME now](https://cineme-ihl8.vercel.app/)
 
 ## 🚀 Key Features
 
@@ -66,7 +66,7 @@
 1. **Clone this repository:**
 
    ```bash
-   git clone https://github.com/Dararith-ux/FinalProject.git
+   git clone https://github.com/Dararith-ux/CineME-Frontend-Web-Final-Project.git
    ```
 2. **Open `index.html`** in your browser or deploy it on platforms like **Vercel**, **Netlify**, or **GitHub Pages**.
 3. **TMDB API Key**: Replace with your own if needed.
