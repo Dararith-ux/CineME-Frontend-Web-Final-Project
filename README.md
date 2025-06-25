@@ -66,7 +66,7 @@
 1. **Clone this repository:**
 
    ```bash
-   git clone https://github.com/your-username/cineme.git
+   git clone https://github.com/Dararith-ux/FinalProject.git
    ```
 2. **Open `index.html`** in your browser or deploy it on platforms like **Vercel**, **Netlify**, or **GitHub Pages**.
 3. **TMDB API Key**: Replace with your own if needed.
