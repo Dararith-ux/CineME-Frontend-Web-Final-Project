@@ -5,6 +5,9 @@ const watchlistButton = document.getElementById("watchLaterBtn");
 const welcomepage = document.getElementById("welcome");
 const Addmodal = document.getElementById("addMovieModal");
 const emptystate = document.getElementById("empty");
+const hasWatchlistUI = Boolean(
+  movieList && watchlist && watchlistButton && welcomepage && Addmodal && emptystate
+);
 
 // Create delete confirmation modal
 function createDeleteModal() {
@@ -114,12 +117,14 @@ function handleEscapeKey(e) {
   }
 }
 
-watchlistButton.addEventListener("click", () => {
-  watchlist.classList.remove("hidden");
-  Addmodal.classList.add("hidden");
-  welcomepage.classList.add("hidden");
-  emptystate.classList.add("hidden");
-});
+if (hasWatchlistUI) {
+  watchlistButton.addEventListener("click", () => {
+    watchlist.classList.remove("hidden");
+    Addmodal.classList.add("hidden");
+    welcomepage.classList.add("hidden");
+    emptystate.classList.add("hidden");
+  });
+}
 
 // Cookie helper functions (add these if you don't have them)
 function setCookieArray(name, array) {
@@ -136,15 +141,11 @@ function getCookie(name) {
 
 // Function to remove movie from cookie
 function removeMovieFromWatchlist(movieID) {
-  console.log('Removing movie ID:', movieID); // Debug log
   let watchLaterList = getCookieArray("watch_later");
-  console.log('Current watchlist:', watchLaterList); // Debug log
   
   // Convert movieID to string to ensure proper comparison
   const movieIdStr = String(movieID);
   watchLaterList = watchLaterList.filter(id => String(id) !== movieIdStr);
-  
-  console.log('Updated watchlist:', watchLaterList); // Debug log
   
   // Update the cookie with the new list
   setCookieArray("watch_later", watchLaterList);
@@ -152,8 +153,6 @@ function removeMovieFromWatchlist(movieID) {
 
 // Function to handle delete button click
 function handleDeleteMovie(movieID, listItem) {
-  console.log('Delete button clicked for movie:', movieID); // Debug log
-  
   // Remove from cookie
   removeMovieFromWatchlist(movieID);
   
@@ -172,7 +171,9 @@ function handleDeleteMovie(movieID, listItem) {
   }, 300);
 }
 
-window.onload = function () {
+async function renderWatchLaterList() {
+  if (!hasWatchlistUI) return;
+
   let list_to_show = getCookieArray("watch_later");
   
   // Show empty state if no movies
@@ -180,16 +181,25 @@ window.onload = function () {
     emptystate.classList.remove("hidden");
     return;
   }
-  
-  list_to_show.forEach(async (movieID) => {
-    const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${api_key}`;
-    const initial = await fetch(url);
-    const data = await initial.json();
-    const li = document.createElement("li");
-    li.className =
-      "bg-white/10 border border-white/20 rounded-lg p-4 hover:bg-white/20 transition-all duration-300 flex justify-between items-center px-[50px] relative group";
-    
-    li.innerHTML = `
+
+  emptystate.classList.add("hidden");
+  movieList.innerHTML = "";
+
+  for (const movieID of list_to_show) {
+    try {
+      const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${api_key}`;
+      const initial = await fetch(url);
+
+      if (!initial.ok) {
+        throw new Error(`Failed to load watchlist movie ${movieID} (${initial.status})`);
+      }
+
+      const data = await initial.json();
+      const li = document.createElement("li");
+      li.className =
+        "bg-white/10 border border-white/20 rounded-xl p-4 md:p-5 hover:bg-white/20 transition-all duration-300 flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 items-start lg:items-center px-4 md:px-6 relative group shadow-lg";
+
+      li.innerHTML = `
       <div class="flex flex-col sm:flex-row items-center sm:items-start sm:gap-4 gap-6 text-center sm:text-left">
         <img class="h-[150px] max-w-full rounded-lg" src="https://image.tmdb.org/t/p/w300${
           data.poster_path
@@ -226,20 +236,25 @@ window.onload = function () {
         </button>
       </div>
     `;
-    
-    // Add delete functionality
-    const deleteBtn = li.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent any parent click events
-      e.preventDefault(); // Prevent default action
-      
-      console.log('Delete button clicked!'); // Debug log
-      
-      // Show custom modal instead of browser confirm
-      showDeleteModal(data.title, movieID, li);
-    });
-    
-    movieList.appendChild(li);
-  });
-};
 
+      const deleteBtn = li.querySelector(".delete-btn");
+      deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        showDeleteModal(data.title, movieID, li);
+      });
+
+      movieList.appendChild(li);
+    } catch (error) {
+      console.error("Failed to load watchlist movie:", error);
+    }
+  }
+
+  if (movieList.children.length === 0) {
+    emptystate.classList.remove("hidden");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderWatchLaterList();
+});

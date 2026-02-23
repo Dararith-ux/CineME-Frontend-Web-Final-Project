@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CineMe</title>
     <link rel="stylesheet" href="./src/style/style.css" />
+    <link rel="stylesheet" href="./src/style/cinema-ui.css" />
     <link rel="shortcut icon" href="./src/img/logowebsite.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
@@ -13,9 +14,9 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
+  <body class="app-canvas bg-gradient-to-b from-[#190000] to-[#29001b]" id="body">
     <header
-      class="w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
+      class="site-header w-full py-4 bg-black/30 backdrop-blur-md border-b border-white/10 px-6 fixed z-20 shadow-xl"
     >
       <div
         class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 md:gap-0"
@@ -62,11 +63,11 @@
 
         <!-- Search Bar -->
         <div class="w-full md:flex-1 md:max-w-md mx-auto order-3 md:order-none">
-          <div class="relative group">
+          <div class="relative group search-container">
             <input
               type="text"
               placeholder="Search movies, actors, genres..."
-              class="w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
+              class="search-input w-full px-6 py-3 pr-14 rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all duration-300 shadow-lg"
             />
             <button
               class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-red-400 transition-all duration-300 hover:scale-110"
@@ -186,22 +187,21 @@
       </nav>
     </header>
 
-    <main class="w-full py-4 px-6 pt-[100px]">
-      <div class="flex items-center flex-col">
+    <main class="page-main w-full py-4 px-4 md:px-6 pt-[100px]">
+      <div class="hero-shell flex items-center flex-col">
         <h1
-          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center pt-20"
+          class="hero-title lg:text-[40px] sm:text-[30px] font-semibold text-white text-center pt-20"
         >
           Dive into each movie and discover the best
         </h1>
         <h1
-          class="lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
+          class="hero-title lg:text-[40px] sm:text-[30px] font-semibold text-white text-center"
         >
           stories waiting to be seen!
         </h1>
 
         <img
-          class="rounded-[20px] mt-4 mx-auto w-[100%] sm:w-[95%] md:w-[700px] lg:w-[1000px] xl:w-[1270px] h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]"
-          class="rounded-[20px] w-[1270px] h-[650px] mt-4"
+          class="hero-image rounded-[20px] mt-4 mx-auto w-[100%] sm:w-[95%] md:w-[700px] lg:w-[1000px] xl:w-[1270px] h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px] object-cover"
           src="https://i.pinimg.com/736x/cc/85/60/cc8560ed3509e2e1ada91f3f327ee04c.jpg"
           alt="Movie poster"
         />
@@ -209,14 +209,14 @@
 
       <!-- Most Popular Movie Section -->
       <div class="max-w-7xl mx-auto px-4 py-8">
-        <div class="text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
+        <div class="section-title text-white text-5xl pl-[16px] pt-[70px] pb-[70px]">
           Most Popular Movie
         </div>
         <!-- Banner Section  -->
         <section class="2xl:w-[1250px] xl:w-[1024px] lg:[768px]">
           <!-- Banner Container -->
           <div
-            class="relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
+            class="hero-banner relative h-96 md:h-[700px] rounded-2xl overflow-hidden cursor-pointer group"
             id="bannerContainer"
           >
             <!-- Banner Slides 1-->
@@ -325,17 +325,17 @@
             
 
             <!-- Now Showing Section -->
-            <div class="mt-16">
-              <div class="flex items-center justify-between gap-20 mb-8">
+            <div class="mt-16 glass-panel section-shell">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8">
                 <button
                   id="nowShowing"
-                  class="tab-button active text-2xl px-4 py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+                  class="tab-button tab-pill active text-lg md:text-2xl border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
                 >
                   Now Showing
                 </button>
                 <button
                   id="addedMovie"
-                  class="tab-button px-4 text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
+                  class="tab-button tab-pill px-4 text-lg md:text-2xl py-2 border-b-2 border-transparent text-white hover:text-yellow-400 transition-colors hover:border-b-yellow-400"
                 >
                   Added Movie
                 </button>
@@ -343,7 +343,7 @@
 
               <div id="editBtn" class="flex justify-end hidden">
                 <button
-                  class="bg-gray-500 flex items-center p-[10px] rounded-[10px] gap-[10px] text-xl hover:bg-gray-600"
+                  class="action-btn secondary flex items-center gap-2 text-sm md:text-base"
                 >
                   <i
                     class="fa-solid fa-pen-to-square"
@@ -354,33 +354,33 @@
               </div>
 
               <!-- Page Navigation -->
-              <div class="flex flex-wrap justify-center space-x-4 mb-8">
+              <div id="pageBtn" class="flex flex-wrap justify-center gap-3 md:gap-4 mb-6 md:mb-8">
                 <div
-                  class="page-button active bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  class="page-button page-pill active bg-gray-800 text-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-1 md:mb-4 w-16 md:w-28 text-center"
                   data-page="1"
                 >
                   1
                 </div>
                 <div
-                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  class="page-button page-pill bg-gray-800 text-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-1 md:mb-4 w-16 md:w-28 text-center"
                   data-page="2"
                 >
                   2
                 </div>
                 <div
-                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  class="page-button page-pill bg-gray-800 text-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-1 md:mb-4 w-16 md:w-28 text-center"
                   data-page="3"
                 >
                   3
                 </div>
                 <div
-                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  class="page-button page-pill bg-gray-800 text-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-1 md:mb-4 w-16 md:w-28 text-center"
                   data-page="4"
                 >
                   4
                 </div>
                 <div
-                  class="page-button bg-gray-800 text-white px-8 py-4 rounded-lg text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-4 w-28 text-center"
+                  class="page-button page-pill bg-gray-800 text-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-2xl font-bold hover:border-2 hover:border-yellow-500 transition-all duration-200 cursor-pointer mb-1 md:mb-4 w-16 md:w-28 text-center"
                   data-page="5"
                 >
                   5
@@ -388,7 +388,7 @@
               </div>
 
               <!-- Current Page Indicator -->
-              <div class="text-center text-white text-xl mb-8">
+              <div class="text-center text-white text-base md:text-xl mb-4 md:mb-6">
                 <p>
                   Currently viewing:
                   <span id="currentPage" class="text-yellow-400 font-bold"
@@ -404,19 +404,19 @@
       </div>
       <div
         id="postercontainer"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-2xl mx-auto"
+        class="movie-grid-shell grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-5 gap-y-6 md:gap-y-8 justify-items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-2xl mx-auto"
       ></div>
       <div
         id="confirmEdit"
-        class="py-[50px] flex gap-[20px] justify-end max-w-7xl mx-auto px-4 hidden"
+        class="py-8 md:py-12 flex flex-wrap gap-3 justify-end max-w-7xl mx-auto px-4 hidden"
       >
         <button
-          class="canSave bg-red-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]"
+          class="canSave action-btn danger text-sm md:text-base"
         >
           Cancel
         </button>
         <button
-          class="canSave bg-green-600 font-semibold text-xl py-[5px] px-[10px] rounded-[10px]"
+          class="canSave action-btn success text-sm md:text-base"
         >
           Save Change
         </button>
@@ -425,10 +425,10 @@
       <!-- modal -->
       <div
         id="modal"
-        class="fixed inset-0 z-50 hidden bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4"
+        class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-md flex items-center justify-center p-3 md:p-4"
       >
         <div
-          class="bg-[#121212] border-2 border-cyan-400 rounded-xl shadow-[0_0_20px_5px_rgba(34,211,238,0.7)] w-full max-w-6xl max-h-[90vh] overflow-y-auto"
+          class="glass-panel bg-[#121212]/90 border border-cyan-300/60 rounded-2xl shadow-[0_0_20px_2px_rgba(34,211,238,0.2)] w-full max-w-6xl max-h-[90vh] overflow-y-auto relative"
         >
           <!-- Close Button -->
           <button
@@ -438,7 +438,7 @@
             <i class="fa-regular fa-circle-xmark"></i>
           </button>
 
-          <div class="flex flex-col md:flex-row gap-6 p-6 text-cyan-100">
+          <div class="flex flex-col md:flex-row gap-6 md:gap-8 p-5 md:p-6 text-cyan-100">
             <!-- Left Column -->
             <div class="md:w-1/3 flex flex-col items-center md:items-start">
               <h1
@@ -502,7 +502,7 @@
       </div>
     </main>
     <footer
-      class="bg-gradient-to-br from-[#091737] via-[#020207] to-[#7F0E24] py-12 px-6 text-white"
+      class="site-footer bg-gradient-to-br from-[#091737] via-[#020207] to-[#7F0E24] py-12 px-6 text-white"
     >
       <div class="max-w-7xl mx-auto px-6 py-12">
         <!-- More Detail Section -->

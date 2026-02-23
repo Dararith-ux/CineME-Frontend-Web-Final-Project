@@ -1,56 +1,51 @@
+let isDarkMode = false;
+
 // Theme toggle functionality
 document.addEventListener("DOMContentLoaded", function () {
   // Get initial theme from localStorage or default to day mode
-  let isDarkMode = localStorage.getItem("darkMode") === "true";
+  isDarkMode = localStorage.getItem("darkMode") === "true";
   const body = document.getElementById("body");
   const themeToggle = document.getElementById("themeToggle");
   const sunIcon = document.getElementById("sunIcon");
   const moonIcon = document.getElementById("moonIcon");
-  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-  const add_to_watch_letter_btn = document.getElementById("add_to_watch_later");
 
   // Apply saved theme on page load
-  applyTheme();
-
-  // Set active nav item
-  document.addEventListener("DOMContentLoaded", function () {
-    const navItems = document.querySelectorAll(".nav-item");
-    navItems[0].classList.add("active"); // Set Home as active by default
-  });
+  if (body && sunIcon && moonIcon) applyTheme();
 
   // Toggle theme when button is clicked
-  themeToggle.addEventListener("click", function () {
+  themeToggle?.addEventListener("click", function () {
     isDarkMode = !isDarkMode;
-    localStorage.setItem("darkMode", isDarkMode);
-    applyTheme();
+    localStorage.setItem("darkMode", String(isDarkMode));
+    if (body && sunIcon && moonIcon) applyTheme();
   });
 
   function applyTheme() {
     if (isDarkMode) {
-      body.classList.remove(
+      body?.classList.remove(
         "bg-gradient-to-b",
         "from-[#190000]",
         "to-[#29001b]"
       );
-      body.classList.add("bg-[#121212]");
-      body.style.background =
+      body?.classList.add("bg-[#121212]");
+      if (body) body.style.background =
         "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f0f0f 100%)";
-      sunIcon.classList.add("hidden");
-      moonIcon.classList.remove("hidden");
+      sunIcon?.classList.add("hidden");
+      moonIcon?.classList.remove("hidden");
     } else {
-      body.classList.remove("bg-[#121212]");
-      body.classList.add("bg-gradient-to-b");
-      body.style.background = "linear-gradient(to bottom, #190000, #29001b)";
-      moonIcon.classList.add("hidden");
-      sunIcon.classList.remove("hidden");
+      body?.classList.remove("bg-[#121212]");
+      body?.classList.add("bg-gradient-to-b");
+      if (body) body.style.background = "linear-gradient(to bottom, #190000, #29001b)";
+      moonIcon?.classList.add("hidden");
+      sunIcon?.classList.remove("hidden");
     }
   }
 });
 
 // Mobile menu toggle
-mobileMenuBtn.addEventListener("click", function () {
-  mobileMenu.classList.toggle("hidden");
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+mobileMenuBtn?.addEventListener("click", function () {
+  mobileMenu?.classList.toggle("hidden");
 });
 
 // Navigation click handlers
@@ -71,7 +66,7 @@ document.querySelectorAll(".nav-item").forEach((item) => {
 // Search functionality
 document
   .querySelector(".search-input")
-  .addEventListener("keypress", function (e) {
+  ?.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       const searchTerm = this.value.trim();
       if (searchTerm) {
@@ -84,8 +79,9 @@ document
 // Search button click
 document
   .querySelector(".search-container button")
-  .addEventListener("click", function () {
+  ?.addEventListener("click", function () {
     const searchInput = document.querySelector(".search-input");
+    if (!searchInput) return;
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
       console.log("Searching for:", searchTerm);
@@ -98,6 +94,7 @@ document
 // Smooth animations on scroll
 window.addEventListener("scroll", function () {
   const header = document.querySelector("header");
+  if (!header) return;
   if (window.scrollY > 10) {
     header.style.backdropFilter = "blur(10px)";
     header.style.backgroundColor = isDarkMode
@@ -139,36 +136,34 @@ function prevSlide() {
 }
 
 // Click events
-bannerContainer.addEventListener("click", (e) => {
-  if (e.target !== prevBtn && e.target !== nextBtn) {
-    nextSlide();
-  }
-});
+if (bannerContainer && prevBtn && nextBtn && totalSlides > 0) {
+  bannerContainer.addEventListener("click", (e) => {
+    if (e.target !== prevBtn && e.target !== nextBtn) {
+      nextSlide();
+    }
+  });
 
-prevBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  prevSlide();
-});
-
-nextBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  nextSlide();
-});
-
-// Auto-advance every 5 seconds
-setInterval(nextSlide, 3000);
-
-// Initialize
-showSlide(0);
-
-// Add keyboard navigation
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") {
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     prevSlide();
-  } else if (e.key === "ArrowRight") {
+  });
+
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     nextSlide();
-  }
-});
+  });
+
+  setInterval(nextSlide, 3000);
+  showSlide(0);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      prevSlide();
+    } else if (e.key === "ArrowRight") {
+      nextSlide();
+    }
+  });
+}
 //============================Footer=========================== Add hover effects and==================================
 document.addEventListener("DOMContentLoaded", function () {
   // Social media icons hover effect
@@ -191,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function openABAModal(event) {
   event.preventDefault(); // Prevent default link behavior
   const modal = document.getElementById("abaModal");
+  if (!modal) return;
   const modalContent = modal.querySelector(".modal-content");
 
   // Show modal
@@ -209,6 +205,7 @@ function openABAModal(event) {
 
 function closeABAModal() {
   const modal = document.getElementById("abaModal");
+  if (!modal) return;
   const modalContent = modal.querySelector(".modal-content");
 
   // Scale down modal content
@@ -226,7 +223,7 @@ function closeABAModal() {
 }
 
 // Close modal when clicking outside
-document.getElementById("abaModal").addEventListener("click", function (event) {
+document.getElementById("abaModal")?.addEventListener("click", function (event) {
   if (event.target === this) {
     closeABAModal();
   }
@@ -236,7 +233,7 @@ document.getElementById("abaModal").addEventListener("click", function (event) {
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     const modal = document.getElementById("abaModal");
-    if (modal.classList.contains("visible")) {
+    if (modal && modal.classList.contains("visible")) {
       closeABAModal();
     }
   }
@@ -283,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Update current page display
           const pageNumber = this.getAttribute('data-page');
-          currentPageSpan.textContent = `Page ${pageNumber}`;
+          if (currentPageSpan) currentPageSpan.textContent = `Page ${pageNumber}`;
           
           // Here you can add logic to load content for the selected page
           console.log(`Loading content for page ${pageNumber}`);
@@ -301,15 +298,15 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Show/hide edit button based on active tab
           if (this.id === 'addedMovie') {
-              editBtn.classList.remove('hidden');
+              editBtn?.classList.remove('hidden');
           } else {
-              editBtn.classList.add('hidden');
+              editBtn?.classList.add('hidden');
           }
           
           // Reset page selection when switching tabs
           pageButtons.forEach(btn => btn.classList.remove('active'));
-          pageButtons[0].classList.add('active');
-          currentPageSpan.textContent = 'Page 1';
+          if (pageButtons[0]) pageButtons[0].classList.add('active');
+          if (currentPageSpan) currentPageSpan.textContent = 'Page 1';
           
           console.log(`Switched to: ${this.textContent.trim()}`);
       });
